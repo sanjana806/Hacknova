@@ -1,0 +1,266 @@
+AMBALA COLLEGE OF ENGINEERING AND APPLIED RESEARCH
+Where Education Is A Passion, Not A Business...
+Ref. No.: __________________Date: 13 October 2026
+NOTICE
+HACKNOVA 2026
+Intra - College Hackathon
+This is to inform all students that the AI&ML Department of Ambala College of Engineering and Applied Research is organizing HACKNOVA 2026, an intra-college hackathon aimed at encouraging innovation, practical problem-solving, technical implementation, teamwork and hands-on learning among students.
+HACKNOVA 2026 is not an idea or presentation competition. Students will be required to study the provided problem statements, select one problem and develop a practical, original and demonstrable solution addressing that problem.
+The event follows the journey: Problem → Idea → Development → Implementation → Testing → Demonstration.
+Who Can Participate ?
+HACKNOVA 2026 is an intra-college hackathon, open to students of Ambala College of Engineering and Applied Research.
+Each team must consist of 2–4 participants.
+Each participant can be part of only one team.
+Students must register within the specified registration period.
+Each team must select one theme and one problem statement from within that theme.
+What Do You Have to Build?
+Participants must carefully review the official HACKNOVA 2026 problem statements and select one problem that they wish to address. Each team must then design and develop an original solution that directly addresses the selected problem.
+The solution may take the form of:
+Web application
+Mobile application
+AI/ML solution
+Software system
+Data-driven solution
+Automation solution
+Prototype
+Hardware-integrated system
+Working model
+Any other technically appropriate solution
+Teams are expected to demonstrate practical implementation. Merely proposing an idea will not be sufficient.
+The selected solution should demonstrate:
+Understanding of the problem
+Proposed approach
+Technical development
+Implementation
+Functionality
+Testing
+Demonstration
+Practical feasibility
+Problem Statements
+The official problem statements for HACKNOVA 2026 comprise 08 carefully selected problem statements across 10 themes and are provided to help teams identify real-world challenges that can be addressed through technology and innovation.
+All participating teams must go through the provided problem statements before developing their solution. Each team must select one theme and one problem statement, and develop a solution specifically based on the selected problem.
+Problems are stated as situations affecting real users or organisations; they do not prescribe a solution. Teams decide the approach, technology and form of their solution. Tags indicate expected solution type: [S] denotes a software-only solution; [H] denotes a hardware-and-software solution. Problems without a tag may be solved either way.
+Theme 1: AI-Powered Urban Mobility
+1. Intelligent Traffic Light Synchronization [S]
+Traffic congestion frequently occurs at busy intersections when traffic lights follow fixed timings without considering actual vehicle density. This leads to long queues, fuel wastage, increased pollution and delays for emergency vehicles. Develop an intelligent traffic light synchronization system that analyses traffic density across connected intersections and dynamically adjusts signal timings to improve traffic flow. The system should coordinate nearby signals to reduce congestion and unnecessary stopping, while prioritizing emergency vehicles wherever feasible.
+Theme 2: Smart Education and Classroom Analytics
+2. Academic Performance-Based Intelligent Seating Arrangement [S]
+Teachers often find it difficult to arrange classroom seating in a way that supports students with different academic performance levels. Develop an intelligent seating arrangement system that accepts student details, marks and performance data, calculates performance averages, identifies relative learning needs and generates an optimized seating plan. The system should strategically pair or seat students of different performance levels to encourage peer learning while maintaining fairness, privacy and a supportive environment. Recommendations must not permanently label or stigmatize students.
+Theme 3: Smart Tourism and Public Safety
+3. Crowd Management at Pilgrimage Sites [S] — State Tourism Department / Pilgrimage Site Administration
+Large pilgrimages and religious gatherings attract thousands of visitors to locations with limited space and narrow entry or exit routes. Authorities may struggle to identify overcrowded areas early, resulting in unsafe crowd movement and potential stampede risks. Develop a crowd management system that estimates crowd density, identifies potentially dangerous congestion zones, provides timely alerts, and recommends safer movement routes or diversion measures. The solution should work with real-time or simulated data and assist authorities in making informed decisions.
+Theme 4: Campus Grievance Redressal
+4. Grievance Cell (Chatbot Model) [S] — College Administration / Student Welfare
+Students often struggle to raise complaints and inquiries and receive timely responses, because grievances for different college departments are handled through scattered, manual channels. This leads to delays, poor tracking and unresolved issues. Develop an automated grievance cell system built around a chatbot that uses an LLM (Large Language Model) to receive student complaints and inquiries, route them to the relevant college department and address common grievances automatically. The system should keep students informed of the status of their complaint and handle sensitive information responsibly.
+Theme 5: Preventive Healthcare and AI
+5. Early Detection of Silent Diseases [S] — Primary Healthcare Centres / Community Health Workers
+Diseases such as diabetes, hypertension and anaemia may remain unnoticed until symptoms become severe or complications develop, and limited screening facilities delay timely risk assessment. Develop an AI-assisted screening and risk assessment system that analyses appropriate health indicators and available patient data to identify individuals who may benefit from early medical evaluation. The system should provide understandable risk alerts and encourage consultation with qualified healthcare professionals. It must not claim to replace a medical diagnosis.
+Theme 6: Healthcare Cybersecurity
+6. Ransomware Resilience for Hospitals [S] — Ministry of Health / Hospital IT Administration / CERT-In
+Hospitals depend on digital patient records, appointment systems, laboratory reports and other critical IT services. A ransomware incident can make these systems unavailable, interrupt healthcare operations and expose sensitive information. Develop a hospital-focused cybersecurity monitoring and preparedness system that identifies suspicious activity, checks backup readiness, detects unusual file changes, and supports incident reporting and recovery planning. The prototype should be demonstrated using safe test data or a simulated environment, without deploying actual ransomware.
+Theme 7: Smart Campus Management
+7. Smart Campus App Development [S] — College Administration
+Colleges manage transportation fees, student and faculty records, performance monitoring and routine checks through separate, disconnected processes, which makes campus administration slow and difficult to oversee. Develop a comprehensive college management application that uses data from Smart Campus systems and centralizes multiple administrative functions, including tracking transportation fees, student and faculty management, and enabling college authorities to monitor student performance and conduct routine checks.
+Theme 8: Smart Supply Chain and Food Safety
+8. Food Cold-Chain Failure Prediction [S] — Food Safety Officers / Logistics Operators
+Perishable food and temperature-sensitive supplies can become unsafe when storage or transportation conditions are not maintained. Develop a predictive monitoring system that analyses simulated temperature, humidity, transit duration and storage records to identify possible cold-chain failures. It should flag high-risk shipments, estimate urgency and help operators take corrective action before further losses occur.
+Registration
+Last Date to Register: 29th October 2026
+Registration Fee: ₹50 per team (mandatory for every team). The registration fee must be submitted to the AI&ML Department, Ambala College of Engineering and Applied Research.
+Registration Link: https://forms.gle/dTjX5Ks7AvPNaRxMA
+Registration QR Code:
+Interested students are required to form their teams and complete registration before the specified deadline.
+HACKNOVA 2026 — Event Flow
+Stage
+Date
+Description
+Registration
+Until 29 October 2026
+Formation of teams and submission of registration details
+Problem Selection & Solution Preparation
+Before Idea Evaluation
+Teams study the problem statements, select one problem and prepare their proposed solution
+Idea Presentation & Evaluation
+2 November 2026
+Initial evaluation of the selected problem, proposed solution, feasibility and implementation approach
+Implementation Round 2
+4 November 2026
+Practical development and implementation of the proposed solution
+Implementation Round 3 / Final Round
+5 November 2026
+Final implementation, demonstration and evaluation
+Final Evaluation & Results
+5 November 2026
+Final assessment and declaration of results
+Round 1 — Idea Presentation & Evaluation (2 November 2026)
+This is the first formal evaluation stage. Teams should be prepared to explain:
+Selected problem statement
+Understanding of the problem
+Proposed solution
+Target users
+Proposed technology
+Feasibility
+Expected impact
+Implementation approach
+Initial development plan
+The purpose is to assess whether the proposed solution clearly addresses the selected problem, is technically feasible, has practical relevance and potential for implementation, and demonstrates originality and meaningful student contribution.
+Round 2 — Implementation (4 November 2026)
+Teams move from their proposed idea into actual development and implementation. Teams should demonstrate meaningful progress such as:
+Developed core functionality
+Initial prototype
+Working modules
+AI/ML model implementation
+System integration
+Hardware/software integration where applicable
+Testing
+Initial results
+The focus of this round is the progression from proposed solution to actual implementation.
+Round 3 — Final Implementation & Demonstration (5 November 2026)
+Teams should demonstrate their completed or substantially functional solution. Evaluation may consider:
+Problem-solution alignment
+Technical implementation
+Functionality
+Innovation
+Practical feasibility
+Usability
+Technical understanding
+Demonstration
+Future scope
+Teams should be able to explain and demonstrate what they have actually developed.
+Rules & Guidelines
+1. Each team must consist of 2–4 participants.
+2. Each participant can be a member of only one team.
+3. Teams must select one theme and one problem statement, and develop an original solution/prototype based on it.
+4. Plagiarism or direct submission of previously developed projects is strictly prohibited.
+5. Participants may use AI tools, APIs and open-source technologies, but the final project must demonstrate their own understanding and contribution.
+6. Teams must submit and demonstrate their solution within the specified timelines.
+7. The decision of the evaluation/judging panel will be final.
+What Is Expected From Each Team?
+Understand the selected problem thoroughly.
+Identify the users and requirements associated with the problem.
+Develop an original solution.
+Demonstrate practical implementation.
+Use technology meaningfully.
+Maintain evidence of their development and progress.
+Understand the technologies used.
+Be able to explain their technical decisions.
+Demonstrate their own contribution.
+Complete the solution within the given timelines.
+Be prepared for technical questioning and live demonstration.
+Coordinator – Dr. Anuja ( AI&ML )
+Er. Narender Kaur (CSE)
+Er. Gagandeep Kaur
+AI&ML department Coordinator
+Dr. SK Jain
+Dean Academics
+Gp Capt CS Sharma, Veteran
+Registrar
+HACKNOVA 2026
+Executive Overview
+HACKNOVA 2026 is structured as a multi-stage, implementation-oriented intra-college hackathon in which students progress from problem identification and solution ideation to practical development, implementation and final demonstration.
+The event is designed to ensure that students move beyond conceptual ideas and demonstrate actual technical implementation, in line with the department's objective of bridging classroom learning and applied, hands-on development.
+Management Event Flow
+Registration (until 29 October 2026) → Problem Statement Selection → Solution Preparation → Idea Presentation & Evaluation (2 November 2026) → Implementation Round 2 (4 November 2026) → Implementation Round 3 / Final (5 November 2026) → Final Evaluation & Results (5 November 2026)
+Purpose of Each Stage
+Registration
+Team formation
+Participant registration
+Problem selection
+Database preparation
+Idea Presentation & Evaluation
+Assess problem understanding
+Assess proposed solution
+Assess feasibility
+Assess innovation
+Assess implementation plan
+Implementation Round 2
+Verify actual development
+Assess technical progress
+Check implementation
+Identify issues
+Evaluate functionality
+Implementation Round 3
+Final implementation
+Working demonstration
+Technical evaluation
+Final assessment
+Evaluation Framework
+Proposed — Subject to Organizing Committee Approval
+Criterion
+What Judges Look For
+Weight
+Problem understanding
+Does the team clearly understand the user and the ground reality?
+20%
+Innovation and originality
+Is the approach fresh and the contribution their own?
+25%
+Technical implementation
+Does the prototype work, and can the team explain how?
+25%
+Feasibility and scalability
+Could this realistically be used by the stated organisation or community?
+20%
+Presentation and demonstration
+Clarity of pitch, demonstration, and answers to questions.
+10%
+Implementation Expectations for Management
+HACKNOVA should be conducted as an implementation-oriented hackathon rather than an idea-only competition.
+Expected progression: Problem Identification → Solution Ideation → Technical Planning → Development → Implementation → Testing → Final Demonstration.
+Idea Evaluation confirms that a team's chosen problem and proposed approach are sound before development begins. Implementation Round 2 verifies that genuine technical progress has been made. Implementation Round 3 / Final Round assesses the completed or substantially functional solution and its demonstration.
+Organising Requirements
+Before the Event
+Finalize problem statements
+Registration form
+QR code
+Team database
+Participant communication
+Evaluation panel
+Evaluation criteria
+Venue
+Internet connectivity
+Power supply
+Projector/display
+Technical support
+Evaluation sheets
+Event schedule
+During the Event
+Registration verification
+Team attendance
+Round coordination
+Time management
+Evaluation panel coordination
+Technical assistance
+Progress monitoring
+Final demonstrations
+Evaluation documentation
+After the Event
+Final evaluation
+Result compilation
+Event report
+Photographs/documentation
+Project records
+Recognition/acknowledgement as approved by management
+Objectives & Expected Outcomes
+Objectives
+To encourage innovation, creativity and practical problem-solving among students through a college-level hackathon.
+To provide students with an opportunity to convert their theoretical knowledge into practical, working solutions by addressing real-world problems.
+To promote hands-on learning and practical implementation through the development of prototypes, applications, systems, working models and technology-based solutions.
+To develop students’ ability to identify problems, design solutions, implement ideas and demonstrate functional outcomes within a given time frame.
+To foster teamwork, collaboration, leadership, communication and effective project management through team-based development.
+To encourage the effective use of Artificial Intelligence, APIs, open-source technologies and emerging technologies, while ensuring meaningful student contribution and understanding.
+To provide students with exposure to interdisciplinary problem-solving and encourage them to explore innovative applications across diverse domains.
+To create a platform where students can showcase their technical skills, creativity, innovation and ability to implement ideas into tangible solutions.
+Expected Outcomes
+Teams will develop and present an innovative and practically implementable solution, prototype, application, system or working model based on a selected hackathon theme.
+Participants will gain hands-on experience in the complete problem-solving and development cycle, including problem identification, ideation, planning, development, implementation, testing and presentation.
+Students will be able to demonstrate the practical application of concepts and technologies learned in the classroom.
+Participants will strengthen their technical, analytical, creative and problem-solving skills through real-world project development.
+Students will develop stronger teamwork, communication, leadership, time-management and project-management skills.
+Participants will gain practical exposure to AI tools, APIs, open-source technologies and emerging technologies through their implementation in project development.
+The hackathon will encourage students to develop solutions that have practical relevance, usability and potential for further development.
+Students will gain confidence in presenting, demonstrating and defending their technical solutions before judges and peers.
+The event will promote a culture of innovation, experimentation, entrepreneurship and experiential learning within the college.
+The hackathon will provide students with an opportunity to transform their ideas into working, demonstrable solutions, thereby bridging the gap between theoretical learning and practical implementation.
+Final Management Outcome
+HACKNOVA 2026 is intended to provide students with a structured platform to transform real-world problem statements into practical technological solutions. Through successive stages of idea evaluation, implementation and final demonstration, the hackathon will bridge the gap between theoretical learning and real-world application while strengthening innovation, technical competence, teamwork and experiential learning.

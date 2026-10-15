@@ -1,0 +1,8 @@
+# Scratch & temporary processing files
+part2_frames/
+scratch/
+scratch_*.py
+*.pyc
+__pycache__/
+.DS_Store
+Thumbs.db

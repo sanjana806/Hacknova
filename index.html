@@ -1,0 +1,4099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HACKNOVA 2026 | Intra-College Hackathon | Ambala College of Engineering and Applied Research</title>
+  <meta name="description" content="HACKNOVA 2026 - Intra-College Hackathon organized by the AI&ML Department of Ambala College of Engineering and Applied Research. Where Education Is A Passion, Not A Business... Powered by Title Sponsor CodroidHub Pvt Ltd." />
+  <meta name="theme-color" content="#030305" />
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Spectral, Inter, Source Code Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Code+Pro:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       HACKNOVA 2026 - MAGICAL DARK & GOLD THEME (Inspired by NexHack)
+       ========================================================================== */
+    :root {
+      --color-bg-dark: #030305;
+      --color-bg-surface: #070913;
+      --color-bg-card: rgba(12, 17, 30, 0.75);
+      --color-bg-card-hover: rgba(18, 25, 45, 0.9);
+      
+      --color-gold-light: #fef0cd;
+      --color-gold-primary: #f0c030;
+      --color-gold-mid: #d4af37;
+      --color-gold-dark: #997300;
+      --color-crimson: #8a0c14;
+      --color-crimson-light: #c41e3a;
+      --color-cyan-glow: #00bfff;
+      --color-text-main: #f5f5fa;
+      --color-text-muted: #a0a5b8;
+      --color-text-dim: #6d7387;
+
+      --font-display: 'Cinzel Decorative', 'Cinzel', serif;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-serif: 'Spectral', Georgia, serif;
+      --font-mono: 'Source Code Pro', monospace;
+
+      --glass-blur: blur(20px);
+      --border-gold-subtle: rgba(212, 175, 55, 0.22);
+      --border-gold-glow: rgba(240, 192, 48, 0.65);
+      --gold-gradient: linear-gradient(135deg, #fce08b 0%, #f0c030 45%, #c8981f 80%, #997300 100%);
+      --text-gold-gradient: linear-gradient(180deg, #ffffff 0%, #fef0cd 35%, #f0c030 70%, #d4af37 100%);
+      
+      --navbar-height: 72px;
+      --border-radius-card: 18px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-main);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body.intro-active {
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--color-gold-mid);
+      color: #030305;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030305;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #25232c;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-gold-dark);
+    }
+
+    /* ==========================================================================
+       1. SESSION-BASED FULLSCREEN VIDEO INTRO OVERLAY
+       ========================================================================== */
+    #videoIntroOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background-color: #020204;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s ease;
+    }
+
+    #videoIntroOverlay.fade-out {
+      opacity: 0 !important;
+      transform: scale(1.04) !important;
+      pointer-events: none !important;
+    }
+
+    #introVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Hide any possible default media controls completely */
+    #introVideo::-webkit-media-controls,
+    #introVideo::-webkit-media-controls-enclosure,
+    #introVideo::-webkit-media-controls-panel {
+      display: none !important;
+      -webkit-appearance: none !important;
+      opacity: 0 !important;
+    }
+
+    .video-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 45%, rgba(0, 0, 0, 0.78) 95%),
+                  linear-gradient(180deg, rgba(3, 3, 5, 0.7) 0%, transparent 20%, transparent 80%, rgba(3, 3, 5, 0.85) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .video-overlay-ui {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 24px;
+      pointer-events: none;
+    }
+
+    .video-top-branding {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      pointer-events: auto;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .video-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(8, 12, 22, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      padding: 6px 20px;
+      border-radius: 40px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(240, 192, 48, 0.25);
+    }
+
+    .video-badge span.sparkle {
+      color: var(--color-gold-primary);
+      animation: pulseSparkle 2s infinite ease-in-out;
+    }
+
+    .video-badge span.text {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f7e7b4;
+      font-weight: 700;
+    }
+
+    .video-college-name {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Highly visible Registration button overlay */
+    .video-action-center {
+      position: absolute;
+      bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      pointer-events: auto;
+      z-index: 20;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .video-registration-btn {
+      position: relative;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #0d0901;
+      background: linear-gradient(135deg, #ffe082 0%, #f0c030 50%, #d4af37 100%);
+      border: 2px solid #ffffff;
+      padding: 16px 48px;
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 0 35px rgba(240, 192, 48, 0.85),
+                  0 10px 30px rgba(0, 0, 0, 0.9),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.9);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .video-registration-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: rotate(30deg);
+      animation: shimmerSweep 3s infinite;
+      pointer-events: none;
+    }
+
+    .video-registration-btn:hover {
+      transform: translateY(-4px) scale(1.06);
+      box-shadow: 0 0 50px rgba(240, 192, 48, 1),
+                  0 15px 40px rgba(0, 0, 0, 0.95);
+      background: linear-gradient(135deg, #ffffff 0%, #fbd560 50%, #d4af37 100%);
+    }
+
+    .video-registration-btn:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    .video-registration-btn .btn-icon {
+      font-size: 1.3rem;
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+    }
+
+    .video-action-hint {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       CANVAS & AMBIENT MAGICAL AURA
+       ========================================================================== */
+    #ambientCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.22;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      top: -10%;
+      left: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, transparent 70%);
+    }
+
+    .orb-2 {
+      top: 40%;
+      right: -5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(0, 191, 255, 0.2) 0%, transparent 70%);
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      bottom: 5%;
+      left: 5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(138, 12, 20, 0.3) 0%, transparent 70%);
+      animation-delay: -9s;
+    }
+
+    /* Wand Cursor */
+    #wandCursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(240, 192, 48, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+      box-shadow: 0 0 12px rgba(240, 192, 48, 0.45);
+      mix-blend-mode: screen;
+      display: none;
+    }
+
+    #wandDot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 100000;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 8px #f0c030, 0 0 14px #f0c030;
+      display: none;
+    }
+
+    body.has-cursor #wandCursor,
+    body.has-cursor #wandDot {
+      display: block;
+    }
+
+    #wandCursor.hovering {
+      width: 48px;
+      height: 48px;
+      border-color: #ffffff;
+      background: rgba(240, 192, 48, 0.15);
+      box-shadow: 0 0 25px rgba(240, 192, 48, 0.7);
+    }
+
+    /* ==========================================================================
+       SITE HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--navbar-height);
+      z-index: 9000;
+      background: rgba(4, 5, 9, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-gold-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(3, 4, 7, 0.96);
+      border-bottom-color: rgba(212, 175, 55, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+    }
+
+    .navbar-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Exact College Logo integrated via Screenshot 2026-10-15 174637.png */
+    .brand-emblem-wrap {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 8px rgba(240, 192, 48, 0.4));
+      transition: transform 0.3s ease;
+    }
+
+    .nav-brand:hover .brand-emblem-wrap {
+      transform: scale(1.06);
+    }
+
+    .nav-college-logo {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(1.2) drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+    }
+
+    .brand-text-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      background: var(--text-gold-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35));
+    }
+
+    .brand-sub {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(245, 230, 200, 0.75);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background: rgba(212, 175, 55, 0.12);
+      text-shadow: 0 0 8px rgba(240, 192, 48, 0.6);
+    }
+
+    .nav-link.active {
+      color: var(--color-gold-primary);
+      background: rgba(212, 175, 55, 0.18);
+      font-weight: 700;
+    }
+
+    .nav-cta-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-register-btn {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #0d0a02;
+      background: var(--gold-gradient);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 10px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.5), 0 2px 8px rgba(0, 0, 0, 0.8);
+      transition: all 0.25s ease;
+    }
+
+    .nav-register-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(240, 192, 48, 0.8), 0 4px 14px rgba(0, 0, 0, 0.9);
+      filter: brightness(1.1);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--color-gold-primary);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .mobile-menu-drawer {
+      display: none;
+      flex-direction: column;
+      background: rgba(4, 6, 12, 0.98);
+      border-bottom: 1px solid var(--border-gold-subtle);
+      padding: 20px 24px;
+      gap: 12px;
+    }
+
+    .mobile-menu-drawer.open {
+      display: flex;
+    }
+
+    .mobile-menu-drawer .nav-link {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      border-radius: 10px;
+    }
+
+    .navbar-bottom-glow {
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(138, 12, 20, 0.6) 15%, rgba(212, 175, 55, 0.9) 50%, rgba(138, 12, 20, 0.6) 85%, transparent 100%);
+      filter: blur(0.5px);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       HERO SECTION WITH COLLEGE LOGO
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      padding-top: calc(var(--navbar-height) + 30px);
+      padding-bottom: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      padding: 0 24px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Hero College Logo (Screenshot 2026-10-15 174637.png) */
+    .hero-college-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      border-radius: 20px;
+      background: rgba(14, 20, 36, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: 0 0 25px rgba(240, 192, 48, 0.25);
+      margin-bottom: 4px;
+    }
+
+    .hero-college-logo-img {
+      height: 68px;
+      width: auto;
+      max-width: 280px;
+      object-fit: contain;
+      filter: brightness(1.2) drop-shadow(0 0 12px rgba(240, 192, 48, 0.6));
+    }
+
+    .college-tagline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(14, 21, 38, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 8px 22px;
+      border-radius: 50px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .college-tagline-badge .badge-icon {
+      color: var(--color-gold-primary);
+      font-size: 1rem;
+    }
+
+    .college-tagline-badge .badge-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      color: #f7e7b4;
+    }
+
+    .hero-college-name {
+      font-family: var(--font-heading);
+      font-size: clamp(0.95rem, 2vw, 1.25rem);
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(245, 245, 250, 0.9);
+      margin-top: 4px;
+    }
+
+    .hero-department-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-cyan-glow);
+      background: rgba(0, 191, 255, 0.08);
+      border: 1px solid rgba(0, 191, 255, 0.25);
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    .hero-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 9vw, 6.8rem);
+      font-weight: 900;
+      letter-spacing: 6px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      background: var(--text-gold-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 15px rgba(240, 192, 48, 0.4))
+              drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95));
+      margin: 10px 0;
+      animation: floatTitle 4.5s ease-in-out infinite alternate;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 2.5vw, 1.55rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e5e5ec;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-subtitle span.highlight {
+      color: var(--color-gold-primary);
+      text-shadow: 0 0 15px rgba(240, 192, 48, 0.6);
+      font-weight: 800;
+    }
+
+    .hero-description {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--color-text-muted);
+      max-width: 780px;
+      line-height: 1.7;
+      margin: 5px 0 15px;
+    }
+
+    /* Countdown */
+    .countdown-wrapper {
+      background: rgba(10, 14, 25, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 20px;
+      padding: 18px 30px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0 15px;
+    }
+
+    .countdown-header {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .countdown-grid {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .countdown-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 65px;
+    }
+
+    .countdown-num {
+      font-family: var(--font-mono);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(240, 192, 48, 0.5);
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-dim);
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    .countdown-separator {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: rgba(212, 175, 55, 0.5);
+      margin-top: -12px;
+    }
+
+    .hero-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn-primary-gold {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #0b0901;
+      background: var(--gold-gradient);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 14px 38px;
+      border-radius: 40px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 25px rgba(240, 192, 48, 0.5), 0 5px 20px rgba(0, 0, 0, 0.7);
+      transition: all 0.28s ease;
+    }
+
+    .btn-primary-gold:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 40px rgba(240, 192, 48, 0.8), 0 8px 25px rgba(0, 0, 0, 0.9);
+      filter: brightness(1.1);
+    }
+
+    .btn-secondary-dark {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #f7e7b4;
+      background: rgba(14, 20, 36, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      padding: 14px 34px;
+      border-radius: 40px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(12px);
+      transition: all 0.28s ease;
+    }
+
+    .btn-secondary-dark:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--color-gold-primary);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1050px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: rgba(12, 17, 30, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 14px;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(240, 192, 48, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(240, 192, 48, 0.2);
+    }
+
+    .stat-icon {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    .stat-desc {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Common Section Utilities */
+    section.site-section {
+      position: relative;
+      padding: 95px 24px;
+      max-width: 1360px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      background: rgba(14, 20, 36, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 5px 18px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: var(--text-gold-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 10px rgba(240, 192, 48, 0.3));
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .section-description {
+      font-family: var(--font-serif);
+      font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 320px;
+      margin: 16px auto 24px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.75));
+    }
+
+    .divider-line.right {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.75), transparent);
+    }
+
+    .divider-gem {
+      color: var(--color-gold-primary);
+      font-size: 0.9rem;
+      filter: drop-shadow(0 0 8px rgba(240, 192, 48, 0.8));
+    }
+
+    /* ==========================================================================
+       2. ABOUT & THE ALCHEMICAL JOURNEY
+       ========================================================================== */
+    .journey-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 45px;
+    }
+
+    .journey-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(13, 19, 35, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 12px 20px;
+      border-radius: 40px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .journey-step:hover {
+      border-color: var(--color-gold-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(240, 192, 48, 0.3);
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-gold-primary);
+      background: rgba(240, 192, 48, 0.15);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-text {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .journey-arrow {
+      color: var(--color-gold-mid);
+      font-size: 1.1rem;
+    }
+
+    .philosophy-card {
+      background: linear-gradient(135deg, rgba(17, 24, 44, 0.8), rgba(9, 13, 23, 0.9));
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--border-radius-card);
+      padding: 35px 40px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.15);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 35px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .philosophy-left h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .philosophy-left p {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+    }
+
+    .philosophy-badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .ph-pill {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #f7e7b4;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+
+    .evaluation-breakdown-card {
+      background: rgba(5, 8, 16, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .eval-title {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .eval-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .eval-label {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: #e0e0ea;
+      font-weight: 500;
+    }
+
+    .eval-weight {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-gold-primary);
+    }
+
+    .eval-bar-bg {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .eval-bar-fill {
+      height: 100%;
+      background: var(--gold-gradient);
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       3. SPONSORS SECTION (CODROIDHUB PVT LTD)
+       ========================================================================== */
+    .sponsor-hero-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(16, 24, 46, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%);
+      border: 1px solid var(--border-gold-glow);
+      border-radius: 24px;
+      padding: 50px 45px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(240, 192, 48, 0.25);
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 45px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .sponsor-brand-box {
+      background: rgba(4, 6, 12, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 20px;
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    }
+
+    .sponsor-logo-frame {
+      width: 140px;
+      height: 140px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ffb228 0%, #ffd700 100%);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 0 30px rgba(255, 178, 40, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .sponsor-logo-frame:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .sponsor-logo-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .sponsor-title-name {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .sponsor-tier-badge {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #04060c;
+      background: var(--gold-gradient);
+      padding: 5px 16px;
+      border-radius: 20px;
+      box-shadow: 0 0 14px rgba(240, 192, 48, 0.5);
+    }
+
+    .sponsor-info-right h3 {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .sponsor-desc-text {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #e0e4f0;
+      margin-bottom: 24px;
+    }
+
+    .sponsor-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .sponsor-pillar-item {
+      background: rgba(14, 20, 36, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pillar-icon {
+      font-size: 1.4rem;
+      color: var(--color-gold-primary);
+    }
+
+    .pillar-text h4 {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .pillar-text p {
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      color: var(--color-text-muted);
+    }
+
+    .sponsor-links-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-sponsor-primary {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0b0901;
+      background: var(--gold-gradient);
+      padding: 11px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 16px rgba(240, 192, 48, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-sponsor-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(240, 192, 48, 0.7);
+    }
+
+    .btn-sponsor-ghost {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #f7e7b4;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sponsor-ghost:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--color-gold-primary);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       4. THEMES & PROBLEM STATEMENTS (8 Official Tracks)
+       ========================================================================== */
+    .themes-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .theme-filter-pill {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(245, 230, 200, 0.7);
+      background: rgba(14, 20, 36, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+    }
+
+    .theme-filter-pill:hover {
+      color: #ffffff;
+      border-color: rgba(240, 192, 48, 0.7);
+      background: rgba(212, 175, 55, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .theme-filter-pill.active {
+      color: #050609;
+      background: var(--gold-gradient);
+      border-color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 0 16px rgba(240, 192, 48, 0.5);
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 26px;
+    }
+
+    .theme-card {
+      position: relative;
+      background: var(--color-bg-card);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: var(--border-radius-card);
+      padding: 30px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .theme-card::before {
+      content: '';
+      position: absolute;
+      top: -80%;
+      left: -80%;
+      width: 60%;
+      height: 260%;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.12), transparent);
+      transform: rotate(35deg);
+      opacity: 0;
+      transition: all 0.7s ease;
+      pointer-events: none;
+    }
+
+    .theme-card:hover::before {
+      opacity: 1;
+      left: 130%;
+    }
+
+    .theme-card:hover {
+      border-color: var(--color-gold-primary);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(240, 192, 48, 0.35);
+      background: var(--color-bg-card-hover);
+    }
+
+    .theme-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .theme-num-badge {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--color-gold-primary);
+      background: rgba(240, 192, 48, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .solution-type-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-cyan-glow);
+      background: rgba(0, 191, 255, 0.1);
+      border: 1px solid rgba(0, 191, 255, 0.3);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .theme-category-name {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(240, 192, 48, 0.85);
+      margin-bottom: 8px;
+    }
+
+    .theme-statement-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .theme-statement-snippet {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      margin-bottom: 18px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .theme-stakeholder {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #d1b46a;
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 2px solid var(--color-gold-mid);
+      padding: 6px 10px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 20px;
+    }
+
+    .theme-card-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .theme-detail-trigger {
+      font-family: var(--font-heading);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .theme-detail-trigger:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       2. MAGIC CHARACTERS BANNER (Just Above Schedule Section)
+       ========================================================================== */
+    .magic-characters-full-banner {
+      width: 100%;
+      background: radial-gradient(ellipse at center, rgba(14, 20, 36, 0.8) 0%, rgba(3, 3, 5, 0.98) 75%);
+      border-top: 1px solid rgba(212, 175, 55, 0.35);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 30px 0 25px;
+      margin: 40px 0 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.15);
+    }
+
+    .characters-strip-wrapper {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .characters-strip-img {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 25px rgba(240, 192, 48, 0.25));
+      animation: floatCharacters 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCharacters {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    /* ==========================================================================
+       3. WINDING TRAIN SCHEDULE TIMELINE ("HOGWARTS EXPRESS TRACK")
+       ========================================================================== */
+    .schedule-express-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .schedule-platform-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(138, 12, 20, 0.85);
+      border: 1px solid rgba(240, 192, 48, 0.6);
+      padding: 6px 22px;
+      border-radius: 40px;
+      box-shadow: 0 0 20px rgba(138, 12, 20, 0.6), 0 0 15px rgba(240, 192, 48, 0.3);
+      margin-bottom: 14px;
+    }
+
+    .schedule-platform-badge span.gem {
+      color: #ffd700;
+      font-size: 0.9rem;
+    }
+
+    .schedule-platform-badge span.text {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .schedule-express-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      letter-spacing: 3px;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(240, 192, 48, 0.4);
+      margin-bottom: 8px;
+    }
+
+    /* Winding Train Track Canvas / SVG Stage */
+    .winding-timeline-stage {
+      position: relative;
+      max-width: 1000px;
+      margin: 40px auto 0;
+      min-height: 1150px;
+    }
+
+    /* SVG Track Overlay */
+    .winding-svg-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Moving Top-Down Hogwarts Express Train */
+    .train-locomotive-rider {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      z-index: 10;
+      pointer-events: none;
+      offset-path: path("M 500 40 C 500 110, 320 120, 320 180 C 320 300, 680 340, 680 460 C 680 580, 320 620, 320 740 C 320 860, 680 900, 680 1020 C 680 1080, 500 1100, 500 1130");
+      offset-rotate: auto;
+      animation: rideWindingTrack 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes rideWindingTrack {
+      0% { offset-distance: 0%; }
+      100% { offset-distance: 100%; }
+    }
+
+    /* Train visual element with glowing headlights beam */
+    .train-body-wrap {
+      position: relative;
+      width: 64px;
+      height: 28px;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Golden forward light beam */
+    .train-headlight-beam {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 44px;
+      background: radial-gradient(ellipse at left, rgba(255, 230, 120, 0.85) 0%, rgba(255, 200, 50, 0.35) 45%, transparent 75%);
+      clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 65%);
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .train-locomotive-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 10px rgba(240, 192, 48, 0.6));
+    }
+
+    /* Station Cards along the winding line */
+    .station-slot {
+      position: absolute;
+      width: 420px;
+      z-index: 5;
+    }
+
+    .station-slot.slot-left {
+      left: 0;
+      text-align: right;
+    }
+
+    .station-slot.slot-right {
+      right: 0;
+      text-align: left;
+    }
+
+    /* Vertical placements aligned with track curves */
+    .slot-1 { top: 120px; }
+    .slot-2 { top: 400px; }
+    .slot-3 { top: 680px; }
+    .slot-4 { top: 960px; }
+
+    .station-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: 18px;
+      padding: 24px 26px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .station-card:hover {
+      border-color: var(--color-gold-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(240, 192, 48, 0.4);
+    }
+
+    .station-header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .slot-left .station-header-meta {
+      justify-content: flex-end;
+    }
+
+    .slot-right .station-header-meta {
+      justify-content: flex-start;
+    }
+
+    .stn-id-badge {
+      font-family: var(--font-heading);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0b0901;
+      background: var(--gold-gradient);
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .stn-date-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-gold-primary);
+      font-weight: 700;
+    }
+
+    .stn-time-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-cyan-glow);
+      margin-bottom: 8px;
+    }
+
+    .stn-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 1.2px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .stn-desc {
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+    }
+
+    .stn-hall-tag {
+      font-family: var(--font-serif);
+      font-size: 0.78rem;
+      color: #f7e7b4;
+      font-style: italic;
+      margin-top: 12px;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       6. GLIMPSES OF AMBALA COLLEGE OF ENGINEERING
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: var(--border-radius-card);
+      overflow: hidden;
+      background: #090e1c;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.1);
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 260px;
+    }
+
+    .gallery-card:hover {
+      border-color: var(--color-gold-primary);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(240, 192, 48, 0.4);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(3, 4, 8, 0.92) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      pointer-events: none;
+    }
+
+    .gallery-tag {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      margin-bottom: 4px;
+    }
+
+    .gallery-caption {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: #ffffff;
+      line-height: 1.3;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Lightbox Modal */
+    #imageLightboxModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 3, 6, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 100000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    #imageLightboxModal.active {
+      display: flex;
+    }
+
+    .lightbox-content-box {
+      position: relative;
+      max-width: 900px;
+      max-height: 85vh;
+      border: 1px solid var(--border-gold-glow);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(240, 192, 48, 0.35);
+      background: #030305;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+
+    .lightbox-caption-bar {
+      padding: 16px 20px;
+      background: rgba(10, 14, 25, 0.95);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: #f7e7b4;
+      text-align: center;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: #ffffff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .lightbox-close-btn:hover {
+      background: var(--color-gold-primary);
+      color: #030305;
+    }
+
+    /* ==========================================================================
+       7. ORGANIZING COMMITTEE (High Council + Single Student Lead Sanjana)
+       ========================================================================== */
+    .tier-section {
+      margin-bottom: 50px;
+    }
+
+    .tier-heading-block {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      margin-bottom: 6px;
+    }
+
+    .tier-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(240, 192, 48, 0.35);
+    }
+
+    .tier-subtitle {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .team-cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .team-member-card {
+      width: 240px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: var(--border-radius-card);
+      padding: 24px 18px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: var(--glass-blur);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transition: all 0.3s ease;
+    }
+
+    .team-member-card:hover {
+      border-color: var(--color-gold-primary);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(240, 192, 48, 0.3);
+    }
+
+    .member-avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 16px;
+    }
+
+    .avatar-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--color-gold-primary);
+      box-shadow: 0 0 18px rgba(240, 192, 48, 0.4);
+      overflow: hidden;
+      background: linear-gradient(135deg, #0e172a, #050811);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-svg-placeholder {
+      width: 65%;
+      height: 65%;
+      fill: rgba(240, 192, 48, 0.75);
+    }
+
+    .member-name {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .member-role {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+    }
+
+    .member-dept {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-text-dim);
+    }
+
+    /* Solo Student Coordinator Card Styling */
+    .solo-student-card {
+      width: 290px;
+      border-color: rgba(240, 192, 48, 0.6);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(240, 192, 48, 0.3);
+      padding: 30px 24px;
+    }
+
+    .solo-student-card .member-avatar-wrapper {
+      width: 125px;
+      height: 125px;
+    }
+
+    .solo-student-card .member-name {
+      font-size: 1.4rem;
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+
+    /* ==========================================================================
+       8. REGISTRATION & QR CHAMBER
+       ========================================================================== */
+    .registration-box {
+      background: linear-gradient(135deg, rgba(16, 24, 46, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%);
+      border: 1px solid var(--border-gold-glow);
+      border-radius: 24px;
+      padding: 50px 40px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(240, 192, 48, 0.25);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .reg-info-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      letter-spacing: 2px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .reg-rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 22px 0 30px;
+    }
+
+    .reg-rules-list li {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .reg-rules-list li span.rune {
+      color: var(--color-gold-primary);
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .qr-card-container {
+      background: rgba(4, 6, 12, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 18px;
+      padding: 26px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .qr-img-frame {
+      width: 220px;
+      height: 220px;
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(240, 192, 48, 0.35);
+    }
+
+    .qr-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-caption {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      color: var(--color-gold-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .qr-subtext {
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      color: var(--color-text-dim);
+    }
+
+    /* ==========================================================================
+       9. FOOTER & CREDITS
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      background: #020204;
+      border-top: 1px solid var(--border-gold-subtle);
+      padding: 80px 24px 35px;
+      z-index: 2;
+    }
+
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: #ffffff;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col h4 span.diamond {
+      color: var(--color-gold-primary);
+    }
+
+    .footer-col p {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: #f7e7b4 !important;
+      font-size: 1.05rem !important;
+      border-left: 2px solid var(--color-gold-mid);
+      padding-left: 12px;
+    }
+
+    .social-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      color: #e5e5f0;
+      text-decoration: none;
+      background: rgba(15, 20, 35, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 10px 18px;
+      border-radius: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .social-btn:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--color-gold-primary);
+      color: #ffffff;
+      transform: translateX(4px);
+      box-shadow: 0 0 15px rgba(240, 192, 48, 0.25);
+    }
+
+    .social-icon-box {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold-primary);
+      font-size: 1.1rem;
+    }
+
+    .location-card {
+      background: rgba(14, 20, 36, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .location-details {
+      font-family: var(--font-body);
+      font-size: 0.84rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .maps-redirect-btn {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0d0a02;
+      background: var(--gold-gradient);
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .maps-redirect-btn:hover {
+      filter: brightness(1.15);
+      box-shadow: 0 0 15px rgba(240, 192, 48, 0.5);
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--color-text-dim);
+    }
+
+    .footer-credits {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #f7e7b4;
+    }
+
+    .footer-credits span.author {
+      color: var(--color-gold-primary);
+      text-shadow: 0 0 10px rgba(240, 192, 48, 0.5);
+    }
+
+    /* ==========================================================================
+       10. THEME DETAIL MODAL
+       ========================================================================== */
+    #themeDetailModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 3, 6, 0.94);
+      backdrop-filter: blur(20px);
+      z-index: 100000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    #themeDetailModal.active {
+      display: flex;
+    }
+
+    .theme-modal-box {
+      position: relative;
+      background: linear-gradient(135deg, #0e162b, #050811);
+      border: 1px solid var(--border-gold-glow);
+      border-radius: 24px;
+      max-width: 750px;
+      width: 100%;
+      padding: 40px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(240, 192, 48, 0.3);
+      animation: modalZoom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-close-cross {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #f7e7b4;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-cross:hover {
+      background: var(--color-gold-primary);
+      color: #030305;
+    }
+
+    .modal-header-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .modal-theme-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .modal-statement-body {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #d8dbe6;
+      margin-bottom: 24px;
+      background: rgba(5, 8, 16, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .modal-stakeholder-row {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #fce08b;
+      margin-bottom: 24px;
+    }
+
+    /* ==========================================================================
+       ANIMATIONS
+       ========================================================================== */
+    @keyframes floatOrb {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-40px) scale(1.15); }
+    }
+
+    @keyframes floatTitle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    @keyframes shimmerSweep {
+      0% { left: -60%; }
+      30% { left: 140%; }
+      100% { left: 140%; }
+    }
+
+    @keyframes pulseSparkle {
+      0%, 100% { opacity: 0.6; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes modalZoom {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .philosophy-card {
+        grid-template-columns: 1fr;
+      }
+      .sponsor-hero-card {
+        grid-template-columns: 1fr;
+      }
+      .registration-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .reg-rules-list li {
+        justify-content: center;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .nav-cta-wrapper {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .sponsor-pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      /* Responsive winding timeline adjustments */
+      .winding-timeline-stage {
+        min-height: auto;
+      }
+      .winding-svg-track, .train-locomotive-rider {
+        display: none;
+      }
+      .station-slot {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        text-align: left !important;
+        margin-bottom: 24px;
+      }
+      .slot-left .station-header-meta {
+        justify-content: flex-start !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --navbar-height: 64px;
+      }
+      section.site-section {
+        padding: 70px 16px;
+      }
+      .hero-main-title {
+        letter-spacing: 3px;
+      }
+      .countdown-wrapper {
+        padding: 14px 18px;
+      }
+      .countdown-grid {
+        gap: 8px;
+      }
+      .countdown-num {
+        font-size: 1.5rem;
+      }
+      .hero-btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-primary-gold, .btn-secondary-dark {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-stats-row {
+        grid-template-columns: 1fr;
+      }
+      .registration-box {
+        padding: 30px 18px;
+      }
+      .qr-img-frame {
+        width: 180px;
+        height: 180px;
+      }
+      .video-registration-btn {
+        padding: 14px 30px;
+        font-size: 0.95rem;
+        letter-spacing: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Magical Orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- Background Particle Embers Canvas -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Arcane Wand Cursor (Desktop) -->
+  <div id="wandCursor"></div>
+  <div id="wandDot"></div>
+
+  <!-- ==========================================================================
+       1. SESSION-BASED FULLSCREEN INTRO VIDEO
+       ========================================================================== -->
+  <div id="videoIntroOverlay" role="dialog" aria-modal="true" aria-label="Introductory Video">
+    <video id="introVideo" playsinline preload="auto">
+      <source src="WhatsApp Video 2026-09-13 at 16.17.42_2.mp4" type="video/mp4">
+      <source src="WhatsApp Video 2026-09-13 at 16.17.42.mp4" type="video/mp4">
+      <source src="hacknova .mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-vignette"></div>
+
+    <div class="video-overlay-ui">
+      <!-- Top Branding -->
+      <div class="video-top-branding">
+        <div class="video-badge">
+          <span class="sparkle">✦</span>
+          <span class="text">AI&ML Department Presents</span>
+          <span class="sparkle">✦</span>
+        </div>
+        <div class="video-college-name">Ambala College of Engineering and Applied Research</div>
+      </div>
+
+      <!-- Center / Bottom Crucial Registration Overlay Button (NO skip or volume controls) -->
+      <div class="video-action-center">
+        <button id="videoRegisterBtn" class="video-registration-btn" aria-label="Registration">
+          <span class="btn-icon">⚡</span>
+          <span>REGISTRATION</span>
+        </button>
+        <div class="video-action-hint">Click Registration to explore Hacknova 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       NAVIGATION HEADER (With Exact College Logo: Screenshot 2026-10-15 174637.png)
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="navbar-inner">
+      <a href="#hero" class="nav-brand" aria-label="HACKNOVA Home">
+        <div class="brand-emblem-wrap">
+          <img src="Screenshot 2026-10-15 174637.png" alt="Ambala College of Engineering Logo" class="nav-college-logo" onerror="this.src='images/Screenshot 2026-10-15 174637.png'">
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title">HACKNOVA</span>
+          <span class="brand-sub">ACE 2026</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">The Quest</a></li>
+          <li><a href="#sponsor" class="nav-link">Title Sponsor</a></li>
+          <li><a href="#themes" class="nav-link">Themes</a></li>
+          <li><a href="#schedule" class="nav-link">Schedule</a></li>
+          <li><a href="#glimpses" class="nav-link">Glimpses</a></li>
+          <li><a href="#council" class="nav-link">Council</a></li>
+          <li><a href="#registration" class="nav-link">Register</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta-wrapper">
+        <a href="#registration" class="nav-register-btn">
+          <span>⚡</span>
+          <span>REGISTER (₹50)</span>
+        </a>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+        ☰
+      </button>
+    </div>
+    <div class="navbar-bottom-glow"></div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="#about" class="nav-link mobile-link">The Quest</a>
+      <a href="#sponsor" class="nav-link mobile-link">Title Sponsor (CodroidHub)</a>
+      <a href="#themes" class="nav-link mobile-link">Themes & Problem Statements</a>
+      <a href="#schedule" class="nav-link mobile-link">Day-Time Schedule</a>
+      <a href="#glimpses" class="nav-link mobile-link">Glimpses of ACE</a>
+      <a href="#council" class="nav-link mobile-link">Council of Arch-Mages</a>
+      <a href="#registration" class="nav-link mobile-link" style="color:var(--color-gold-primary); font-weight:800;">Register Now (₹50)</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION (With Exact College Logo: Screenshot 2026-10-15 174637.png)
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-container">
+      
+      <!-- College Logo in Hero Section -->
+      <div class="hero-college-logo-wrap">
+        <img src="Screenshot 2026-10-15 174637.png" alt="Ambala College of Engineering and Applied Research" class="hero-college-logo-img" onerror="this.src='images/Screenshot 2026-10-15 174637.png'">
+      </div>
+
+      <!-- Tagline Badge -->
+      <div class="college-tagline-badge">
+        <span class="badge-icon">✦</span>
+        <span class="badge-text">"Where Education Is A Passion, Not A Business..."</span>
+        <span class="badge-icon">✦</span>
+      </div>
+
+      <div class="hero-college-name">Ambala College of Engineering and Applied Research</div>
+      <div class="hero-department-pill">Organized by Department of AI & ML</div>
+
+      <!-- Main Title -->
+      <h1 class="hero-main-title">HACKNOVA</h1>
+
+      <div class="hero-subtitle">
+        Intra-College Hackathon • <span class="highlight">2026 Edition</span>
+      </div>
+
+      <p class="hero-description">
+        Bridging theoretical mastery and hands-on technological creation. Step into the arena of applied engineering where code meets physical reality and visionary concepts transform into demonstrable prototypes.
+      </p>
+
+      <!-- Live Countdown to Registration Deadline -->
+      <div class="countdown-wrapper">
+        <div class="countdown-header">
+          <span>⏳</span>
+          <span>Registration Closes: 29th October 2026</span>
+        </div>
+        <div class="countdown-grid">
+          <div class="countdown-card">
+            <span class="countdown-num" id="cdDays">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-card">
+            <span class="countdown-num" id="cdHours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-card">
+            <span class="countdown-num" id="cdMinutes">00</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-card">
+            <span class="countdown-num" id="cdSeconds">00</span>
+            <span class="countdown-label">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="hero-btn-group">
+        <a href="#registration" class="btn-primary-gold">
+          <span>⚡</span>
+          <span>Register Team (₹50)</span>
+        </a>
+        <a href="#sponsor" class="btn-secondary-dark">
+          <span>🤝</span>
+          <span>Title Sponsor: CodroidHub</span>
+        </a>
+        <a href="#themes" class="btn-secondary-dark">
+          <span>📜</span>
+          <span>Explore 8 Themes</span>
+        </a>
+      </div>
+
+      <!-- Quick Meta Stats Row -->
+      <div class="hero-stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value">2 – 4 Students</div>
+          <div class="stat-desc">Per Squad</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-value">₹50 Only</div>
+          <div class="stat-desc">Team Fee to AI&ML Dept</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-value">8 Real Challenges</div>
+          <div class="stat-desc">Interdisciplinary Tracks</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">☀️</div>
+          <div class="stat-value">Day-Time Rounds</div>
+          <div class="stat-desc">10:00 AM – 4:00 PM</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. ABOUT / THE QUEST (Alchemical Journey)
+       ========================================================================== -->
+  <section class="site-section" id="about">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> The Alchemical Journey <span>✦</span>
+      </div>
+      <h2 class="section-title">Beyond Theory. Into Code.</h2>
+      <div class="gold-divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem">◆</div>
+        <div class="divider-line right"></div>
+      </div>
+      <p class="section-description">
+        HACKNOVA 2026 is strictly not an idea or paper pitch competition. Every team is empowered to construct a practical, original, and demonstrable solution solving real societal and campus challenges.
+      </p>
+    </div>
+
+    <!-- The 6-Stage Journey Chain -->
+    <div class="journey-grid">
+      <div class="journey-step">
+        <span class="step-num">1</span>
+        <span class="step-text">Problem</span>
+      </div>
+      <span class="journey-arrow">➔</span>
+      <div class="journey-step">
+        <span class="step-num">2</span>
+        <span class="step-text">Idea</span>
+      </div>
+      <span class="journey-arrow">➔</span>
+      <div class="journey-step">
+        <span class="step-num">3</span>
+        <span class="step-text">Development</span>
+      </div>
+      <span class="journey-arrow">➔</span>
+      <div class="journey-step">
+        <span class="step-num">4</span>
+        <span class="step-text">Implementation</span>
+      </div>
+      <span class="journey-arrow">➔</span>
+      <div class="journey-step">
+        <span class="step-num">5</span>
+        <span class="step-text">Testing</span>
+      </div>
+      <span class="journey-arrow">➔</span>
+      <div class="journey-step">
+        <span class="step-num">6</span>
+        <span class="step-text">Demonstration</span>
+      </div>
+    </div>
+
+    <!-- Implementation Expectations & Evaluation Framework -->
+    <div class="philosophy-card">
+      <div class="philosophy-left">
+        <h3>What Must Teams Construct?</h3>
+        <p>
+          Teams select one theme and one problem statement, transforming it into working software, machine learning architectures, automated IoT systems, or hardware-integrated prototypes.
+        </p>
+        <p>
+          Students are encouraged to utilize modern AI tools, open-source libraries, and APIs, provided the final product reflects genuine architectural comprehension, customized code, and direct defense.
+        </p>
+        <div class="philosophy-badge-list">
+          <span class="ph-pill">✓ Web & Mobile Apps</span>
+          <span class="ph-pill">✓ AI/ML Pipelines</span>
+          <span class="ph-pill">✓ Embedded IoT & Hardware</span>
+          <span class="ph-pill">✓ Cyber Threat Models</span>
+          <span class="ph-pill">✓ Campus Intelligence</span>
+        </div>
+      </div>
+
+      <div class="evaluation-breakdown-card">
+        <div class="eval-title">Official Evaluation Weightage</div>
+        
+        <div class="eval-item">
+          <span class="eval-label">Innovation & Originality</span>
+          <span class="eval-weight">25%</span>
+        </div>
+        <div class="eval-bar-bg"><div class="eval-bar-fill" style="width: 25%;"></div></div>
+
+        <div class="eval-item">
+          <span class="eval-label">Technical Implementation & Code</span>
+          <span class="eval-weight">25%</span>
+        </div>
+        <div class="eval-bar-bg"><div class="eval-bar-fill" style="width: 25%;"></div></div>
+
+        <div class="eval-item">
+          <span class="eval-label">Problem Ground Reality Understanding</span>
+          <span class="eval-weight">20%</span>
+        </div>
+        <div class="eval-bar-bg"><div class="eval-bar-fill" style="width: 20%;"></div></div>
+
+        <div class="eval-item">
+          <span class="eval-label">Feasibility & Institutional Scalability</span>
+          <span class="eval-weight">20%</span>
+        </div>
+        <div class="eval-bar-bg"><div class="eval-bar-fill" style="width: 20%;"></div></div>
+
+        <div class="eval-item">
+          <span class="eval-label">Live Pitch & Q&A Demonstration</span>
+          <span class="eval-weight">10%</span>
+        </div>
+        <div class="eval-bar-bg"><div class="eval-bar-fill" style="width: 10%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. SPONSOR SECTION: CODROIDHUB PVT LTD
+       ========================================================================== -->
+  <section class="site-section" id="sponsor">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> Empowering Tech Innovations <span>✦</span>
+      </div>
+      <h2 class="section-title">Official Title Sponsor</h2>
+      <div class="gold-divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem">◆</div>
+        <div class="divider-line right"></div>
+      </div>
+      <p class="section-description">
+        HACKNOVA 2026 is proudly backed by our official technology partner and innovation ecosystem enabler.
+      </p>
+    </div>
+
+    <!-- CodroidHub Sponsor Feature Card -->
+    <div class="sponsor-hero-card">
+      <div class="sponsor-brand-box">
+        <div class="sponsor-logo-frame">
+          <img src="images/codroidhub_logo.png" alt="CodroidHub Logo" onerror="this.src='https://codroidhub.com/logo.png'">
+        </div>
+        <h3 class="sponsor-title-name">CodroidHub</h3>
+        <div class="sponsor-tier-badge">Official Title Sponsor</div>
+        <p style="font-family:var(--font-mono); font-size:0.75rem; color:var(--color-cyan-glow); margin-top:10px;">
+          CodroidHub Pvt Ltd
+        </p>
+      </div>
+
+      <div class="sponsor-info-right">
+        <h3>A Unified Tech Ecosystem & Innovation Partner</h3>
+        <p class="sponsor-desc-text">
+          <strong>CodroidHub Pvt Ltd</strong> is a premier technology innovation ecosystem and development platform dedicated to empowering next-generation engineers. Through experiential training, real-world project mentorship, and incubation pipelines across its regional centers in Ambala and Chandigarh, CodroidHub bridges academic learning with cutting-edge industry software and AI practices.
+        </p>
+
+        <!-- Sponsor Core Pillars -->
+        <div class="sponsor-pillars-grid">
+          <div class="sponsor-pillar-item">
+            <div class="pillar-icon">🚀</div>
+            <div class="pillar-text">
+              <h4>Ecosystem Platforms</h4>
+              <p>Interconnected platforms powering every stage of technical development.</p>
+            </div>
+          </div>
+          <div class="sponsor-pillar-item">
+            <div class="pillar-icon">💡</div>
+            <div class="pillar-text">
+              <h4>Incubation & Mentorship</h4>
+              <p>Nurturing student prototypes into viable startups and applied solutions.</p>
+            </div>
+          </div>
+          <div class="sponsor-pillar-item">
+            <div class="pillar-icon">💻</div>
+            <div class="pillar-text">
+              <h4>Hands-On Training</h4>
+              <p>Advanced full-stack, AI/ML, and cloud engineering industry internships.</p>
+            </div>
+          </div>
+          <div class="sponsor-pillar-item">
+            <div class="pillar-icon">📍</div>
+            <div class="pillar-text">
+              <h4>Regional Tech Hubs</h4>
+              <p>Active centers across Ambala Cantt, Chandigarh & partner institutes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-links-row">
+          <a href="https://codroidhub.com/our-platforms" target="_blank" rel="noopener noreferrer" class="btn-sponsor-primary">
+            <span>Explore Platforms</span> <span>➔</span>
+          </a>
+          <a href="https://codroidhub.com" target="_blank" rel="noopener noreferrer" class="btn-sponsor-ghost">
+            <span>Visit CodroidHub.com</span>
+          </a>
+          <a href="https://www.linkedin.com/company/codroidhub/" target="_blank" rel="noopener noreferrer" class="btn-sponsor-ghost">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. THEMES & PROBLEM STATEMENTS (8 Official Tracks)
+       ========================================================================== -->
+  <section class="site-section" id="themes">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> Chambers of Innovation <span>✦</span>
+      </div>
+      <h2 class="section-title">8 Official Problem Statements</h2>
+      <div class="gold-divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem">◆</div>
+        <div class="divider-line right"></div>
+      </div>
+      <p class="section-description">
+        Carefully curated by the AI&ML Department to reflect pressing technological, municipal, healthcare, and campus challenges. Choose your track and forge an impactful solution.
+      </p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="themes-filter-bar">
+      <button class="theme-filter-pill active" data-filter="all">All Tracks</button>
+      <button class="theme-filter-pill" data-filter="ai">AI & Analytics</button>
+      <button class="theme-filter-pill" data-filter="campus">Campus & Urban</button>
+      <button class="theme-filter-pill" data-filter="health">Healthcare & Bio</button>
+      <button class="theme-filter-pill" data-filter="security">Trust & Cybersecurity</button>
+    </div>
+
+    <!-- Themes Grid (8 Tracks) -->
+    <div class="themes-grid" id="themesGrid">
+
+      <!-- Track 1 -->
+      <div class="theme-card" data-category="ai campus">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 01</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">AI-Powered Urban Mobility</div>
+          <h3 class="theme-statement-title">Intelligent Traffic Light Synchronization</h3>
+          <p class="theme-statement-snippet">
+            Traffic congestion frequently occurs at busy intersections when traffic lights follow fixed timings without considering actual vehicle density. This leads to long queues, fuel wastage, and delays for emergency vehicles. Develop an intelligent system that analyses traffic density and coordinates nearby signals dynamically.
+          </p>
+          <div class="theme-stakeholder">🏛️ Focus: Municipal Traffic & Emergency Corridors</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(1)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 2 -->
+      <div class="theme-card" data-category="ai campus">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 02</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Smart Education and Classroom Analytics</div>
+          <h3 class="theme-statement-title">Academic Performance-Based Intelligent Seating Arrangement</h3>
+          <p class="theme-statement-snippet">
+            Teachers find it difficult to arrange classroom seating that supports students with diverse learning curves. Develop an intelligent seating system that accepts student metrics, performance averages, and learning needs to generate an optimized, privacy-preserving seating plan encouraging peer learning.
+          </p>
+          <div class="theme-stakeholder">🏫 Focus: Academic Institutions & Pedagogy</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(2)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 3 -->
+      <div class="theme-card" data-category="campus ai">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 03</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Smart Tourism and Public Safety</div>
+          <h3 class="theme-statement-title">Crowd Management at Pilgrimage Sites</h3>
+          <p class="theme-statement-snippet">
+            Large pilgrimages and religious gatherings attract thousands of visitors to locations with narrow entry routes. Authorities struggle to detect bottleneck zones early, risking stampedes. Develop a crowd management system estimating density, issuing timely alerts, and suggesting safe diversion routes.
+          </p>
+          <div class="theme-stakeholder">🛡️ Focus: State Tourism & Pilgrimage Administration</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(3)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 4 -->
+      <div class="theme-card" data-category="security ai campus">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 04</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Campus Grievance / Digital Trust</div>
+          <h3 class="theme-statement-title">Grievance Cell Chatbot / Product Authentication</h3>
+          <p class="theme-statement-snippet">
+            Students struggle to raise complaints across scattered, manual channels, while institutions also combat counterfeit credentials. Develop an automated LLM-powered grievance redressal chatbot system for college student welfare or a digital trust authentication platform verifying product & booklet authenticity.
+          </p>
+          <div class="theme-stakeholder">🔐 Focus: Student Welfare / Institutional Verification</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(4)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 5 -->
+      <div class="theme-card" data-category="health ai">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 05</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Preventive Healthcare and AI</div>
+          <h3 class="theme-statement-title">Early Detection of Silent Diseases</h3>
+          <p class="theme-statement-snippet">
+            Conditions like diabetes, hypertension, and anaemia often remain unnoticed until severe complications develop. Develop an AI-assisted screening assessment system that analyses preliminary health markers and patient records to recommend timely medical evaluations without claiming clinical replacement.
+          </p>
+          <div class="theme-stakeholder">🩺 Focus: Primary Healthcare & Community Workers</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(5)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 6 -->
+      <div class="theme-card" data-category="security health">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 06</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Healthcare Cybersecurity</div>
+          <h3 class="theme-statement-title">Ransomware Resilience for Hospitals</h3>
+          <p class="theme-statement-snippet">
+            Hospitals depend on digital patient records and critical telemetry. A ransomware attack can paralyze life-saving operations. Develop a healthcare cybersecurity monitoring and incident preparedness system detecting suspicious file variations, verifying backup readiness, and orchestrating rapid recovery.
+          </p>
+          <div class="theme-stakeholder">🏥 Focus: Hospital IT Administration / CERT-In</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(6)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 7 -->
+      <div class="theme-card" data-category="campus">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 07</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Smart Campus & Water Infrastructure</div>
+          <h3 class="theme-statement-title">Smart Campus App / Water Infrastructure Leakage</h3>
+          <p class="theme-statement-snippet">
+            Develop a comprehensive college management application that centralizes administrative operations (fees, performance checks, transportation), or an intelligent system predicting invisible campus water leakages through consumption patterns and pressure sensors.
+          </p>
+          <div class="theme-stakeholder">💧 Focus: College Administration & Campus Maintenance</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(7)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 8 -->
+      <div class="theme-card" data-category="campus health">
+        <div class="theme-card-top">
+          <span class="theme-num-badge">Theme 08</span>
+          <span class="solution-type-tag">[S] Software</span>
+        </div>
+        <div>
+          <div class="theme-category-name">Smart Supply Chain and Food Safety</div>
+          <h3 class="theme-statement-title">Food Cold-Chain Failure Prediction</h3>
+          <p class="theme-statement-snippet">
+            Perishable food and biological supplies degrade rapidly when refrigeration thresholds are breached in transit. Develop a predictive monitoring engine analysing temperature logs, humidity sensors, and transit delays to flag high-risk shipments before irreversible spoilage occurs.
+          </p>
+          <div class="theme-stakeholder">❄️ Focus: Food Safety Officers & Cold Logistics</div>
+        </div>
+        <div class="theme-card-footer">
+          <button class="theme-detail-trigger" onclick="openThemeModal(8)">
+            <span>Inspect Chamber</span> <span>➔</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. MAGIC CHARACTERS BANNER (Just Above The Schedule Section)
+       ========================================================================== -->
+  <div class="magic-characters-full-banner">
+    <div class="characters-strip-wrapper">
+      <img src="images/characters_row.png" alt="Harry Potter Magical Chibi Characters Strip" class="characters-strip-img" onerror="this.src='characters_row.png'">
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       3. WINDING TRAIN SCHEDULE TIMELINE ("HOGWARTS EXPRESS TRACK")
+       ========================================================================== -->
+  <section class="site-section" id="schedule">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> Scroll of Time <span>✦</span>
+      </div>
+      
+      <!-- Hogwarts Express Schedule Header inspired by PART2.mp4 -->
+      <div class="schedule-express-header">
+        <div class="schedule-platform-badge">
+          <span class="gem">✦</span>
+          <span class="text">King's Cross Platform 9¾</span>
+          <span class="gem">✦</span>
+        </div>
+        <h2 class="schedule-express-title">Hogwarts Express Schedule</h2>
+        <div class="gold-divider">
+          <div class="divider-line"></div>
+          <div class="divider-gem">◆</div>
+          <div class="divider-line right"></div>
+        </div>
+        <div class="schedule-notice" style="margin-bottom: 10px;">
+          <span>☀️</span>
+          <span>Notice: This is NOT a 24-hour hackathon. All rounds take place between 10:00 AM and 4:00 PM.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winding Track Stage -->
+    <div class="winding-timeline-stage">
+      
+      <!-- SVG Track with Dual Rails, Ties/Sleepers, and Glow -->
+      <svg class="winding-svg-track" viewBox="0 0 1000 1150" fill="none" preserveAspectRatio="none">
+        <defs>
+          <filter id="trackGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        <!-- Golden Track Aura -->
+        <path d="M 500 40 C 500 110, 320 120, 320 180 C 320 300, 680 340, 680 460 C 680 580, 320 620, 320 740 C 320 860, 680 900, 680 1020 C 680 1080, 500 1100, 500 1130"
+              stroke="rgba(240, 192, 48, 0.22)" stroke-width="32" stroke-linecap="round" filter="url(#trackGlow)" />
+
+        <!-- Wooden/Brass Cross Ties (Railway Sleepers) -->
+        <path d="M 500 40 C 500 110, 320 120, 320 180 C 320 300, 680 340, 680 460 C 680 580, 320 620, 320 740 C 320 860, 680 900, 680 1020 C 680 1080, 500 1100, 500 1130"
+              stroke="rgba(212, 175, 55, 0.45)" stroke-width="20" stroke-dasharray="3 9" stroke-linecap="butt" />
+
+        <!-- Dual Golden Rails (Left Rail & Right Rail) -->
+        <path d="M 495 40 C 495 110, 315 120, 315 180 C 315 300, 675 340, 675 460 C 675 580, 315 620, 315 740 C 315 860, 675 900, 675 1020 C 675 1080, 495 1100, 495 1130"
+              stroke="#f0c030" stroke-width="2.5" />
+        <path d="M 505 40 C 505 110, 325 120, 325 180 C 325 300, 685 340, 685 460 C 685 580, 325 620, 325 740 C 325 860, 685 900, 685 1020 C 685 1080, 505 1100, 505 1130"
+              stroke="#f0c030" stroke-width="2.5" />
+
+        <!-- Horizontal Station Spur Lines connecting Track to Station Cards -->
+        <line x1="180" y1="180" x2="315" y2="180" stroke="rgba(240, 192, 48, 0.6)" stroke-width="1.8" stroke-dasharray="4 4" />
+        <line x1="685" y1="460" x2="820" y2="460" stroke="rgba(240, 192, 48, 0.6)" stroke-width="1.8" stroke-dasharray="4 4" />
+        <line x1="180" y1="740" x2="315" y2="740" stroke="rgba(240, 192, 48, 0.6)" stroke-width="1.8" stroke-dasharray="4 4" />
+        <line x1="685" y1="1020" x2="820" y2="1020" stroke="rgba(240, 192, 48, 0.6)" stroke-width="1.8" stroke-dasharray="4 4" />
+
+        <!-- Station Junction Node Discs -->
+        <circle cx="320" cy="180" r="14" fill="#740001" stroke="#ffd700" stroke-width="3" />
+        <circle cx="320" cy="180" r="5" fill="#ffffff" />
+
+        <circle cx="680" cy="460" r="14" fill="#740001" stroke="#ffd700" stroke-width="3" />
+        <circle cx="680" cy="460" r="5" fill="#ffffff" />
+
+        <circle cx="320" cy="740" r="14" fill="#740001" stroke="#ffd700" stroke-width="3" />
+        <circle cx="320" cy="740" r="5" fill="#ffffff" />
+
+        <circle cx="680" cy="1020" r="14" fill="#740001" stroke="#ffd700" stroke-width="3" />
+        <circle cx="680" cy="1020" r="5" fill="#ffffff" />
+      </svg>
+
+      <!-- Animated Top-Down Hogwarts Express Train Riding Along Path -->
+      <div class="train-locomotive-rider" aria-label="Hogwarts Express Locomotive">
+        <div class="train-body-wrap">
+          <!-- Headlight forward beam -->
+          <div class="train-headlight-beam"></div>
+          <!-- Top-down steam locomotive SVG -->
+          <svg class="train-locomotive-svg" viewBox="0 0 64 28" fill="none">
+            <!-- Tender / Carriage -->
+            <rect x="2" y="5" width="16" height="18" rx="3" fill="#500000" stroke="#f0c030" stroke-width="1.2" />
+            <rect x="5" y="8" width="10" height="12" rx="1.5" fill="#200000" />
+            <!-- Coupling link -->
+            <rect x="18" y="12" width="4" height="4" fill="#999" />
+            <!-- Main Engine Boiler -->
+            <rect x="22" y="4" width="38" height="20" rx="4" fill="#740001" stroke="#ffd700" stroke-width="1.5" />
+            <!-- Cab Roof -->
+            <rect x="23" y="5" width="12" height="18" rx="2" fill="#400000" stroke="#f0c030" stroke-width="1" />
+            <!-- Cylindrical Boiler Bands -->
+            <line x1="42" y1="5" x2="42" y2="23" stroke="#ffd700" stroke-width="1.5" />
+            <line x1="48" y1="5" x2="48" y2="23" stroke="#ffd700" stroke-width="1.5" />
+            <!-- Steam Chimney / Funnel -->
+            <circle cx="54" cy="14" r="3.5" fill="#151515" stroke="#ffd700" stroke-width="1" />
+            <!-- Front Headlights (Lanterns) -->
+            <circle cx="60" cy="8" r="2.2" fill="#fffbcf" stroke="#ffd700" stroke-width="1" />
+            <circle cx="60" cy="20" r="2.2" fill="#fffbcf" stroke="#ffd700" stroke-width="1" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Station 01: Registration (Left) -->
+      <div class="station-slot slot-left slot-1">
+        <div class="station-card">
+          <div class="station-header-meta">
+            <span class="stn-id-badge">STN 01</span>
+            <span class="stn-date-badge">Until 29 October 2026</span>
+          </div>
+          <div class="stn-time-tag">Submission Deadline: 11:59 PM</div>
+          <h3 class="stn-title">Squad Registration & Check-In</h3>
+          <p class="stn-desc">
+            Form your squad of 2 to 4 students. Select your problem statement from the 8 official tracks. Complete the official Google Form and deposit the mandatory ₹50 team fee to the AI&ML Department.
+          </p>
+          <div class="stn-hall-tag">⚓ Departure Point • AI&ML Department Platform</div>
+        </div>
+      </div>
+
+      <!-- Station 02: Idea Evaluation (Right) -->
+      <div class="station-slot slot-right slot-2">
+        <div class="station-card">
+          <div class="station-header-meta">
+            <span class="stn-id-badge">STN 02</span>
+            <span class="stn-date-badge">2 November 2026</span>
+          </div>
+          <div class="stn-time-tag">10:00 AM – 4:00 PM</div>
+          <h3 class="stn-title">Round 1: Idea Presentation & Evaluation</h3>
+          <p class="stn-desc">
+            Initial formal evaluation before the faculty panel. Teams pitch selected problem statements, target user understanding, feasibility analysis, architecture blueprints, and initial development milestones.
+          </p>
+          <div class="stn-hall-tag">⚓ Great Hall Junction • Evaluation Auditoriums</div>
+        </div>
+      </div>
+
+      <!-- Station 03: Implementation Round 2 (Left) -->
+      <div class="station-slot slot-left slot-3">
+        <div class="station-card">
+          <div class="station-header-meta">
+            <span class="stn-id-badge">STN 03</span>
+            <span class="stn-date-badge">4 November 2026</span>
+          </div>
+          <div class="stn-time-tag">10:00 AM – 4:00 PM</div>
+          <h3 class="stn-title">Round 2: Practical Implementation Review</h3>
+          <p class="stn-desc">
+            Progression from conceptual idea into live code and prototypes. Verification of core functional modules, repository commits, AI/ML model integration, sensor telemetry, and initial test results.
+          </p>
+          <div class="stn-hall-tag">⚓ Chamber of Sorcery • Advanced Computing Labs</div>
+        </div>
+      </div>
+
+      <!-- Station 04: Final Presentation & Demos (Right) -->
+      <div class="station-slot slot-right slot-4">
+        <div class="station-card">
+          <div class="station-header-meta">
+            <span class="stn-id-badge">STN 04</span>
+            <span class="stn-date-badge">5 November 2026</span>
+          </div>
+          <div class="stn-time-tag">10:00 AM – 4:00 PM (Results: 4:30 PM)</div>
+          <h3 class="stn-title">Round 3: Grand Finale & Demos</h3>
+          <p class="stn-desc">
+            Final implementation, working live demonstration, and comprehensive technical defense before the Council of Arch-Mages and industry judges. Concluded by the official declaration of results!
+          </p>
+          <div class="stn-hall-tag">⚓ The High Citadel • Main Conference Arena</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. GLIMPSES OF AMBALA COLLEGE OF ENGINEERING
+       ========================================================================== -->
+  <section class="site-section" id="glimpses">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> Campus Chronicles <span>✦</span>
+      </div>
+      <h2 class="section-title">Glimpses of Ambala College of Engineering</h2>
+      <div class="gold-divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem">◆</div>
+        <div class="divider-line right"></div>
+      </div>
+      <p class="section-description">
+        Moments of innovation, academic passion, and collaborative energy from our recent No-Code AI Challenge, Incubation Opportunities seminars, and Entrepreneurship roundtables.
+      </p>
+    </div>
+
+    <!-- 8 Image Masonry / Grid Gallery -->
+    <div class="gallery-grid">
+      
+      <!-- Photo 1: College Building -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_1.jpeg', 'Ambala College of Engineering and Applied Research - Main Campus Block')">
+        <img src="images/glimpse_1.jpeg" alt="ACE Main Campus" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">The Citadel</span>
+          <div class="gallery-caption">Ambala College of Engineering & Applied Research</div>
+        </div>
+      </div>
+
+      <!-- Photo 2: No-Code AI Challenge -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_2.jpeg', 'Faculty & Students celebrating the No-Code AI Challenge')">
+        <img src="images/glimpse_2.jpeg" alt="No-Code AI Challenge" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Hackathon Tradition</span>
+          <div class="gallery-caption">Recent No-Code AI Challenge Valedictory</div>
+        </div>
+      </div>
+
+      <!-- Photo 3: Seminar Hall Lecture -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_3.jpeg', 'Technical Seminar in Hall with ACE Students & Projector Session')">
+        <img src="images/glimpse_3.jpeg" alt="Technical Seminar Hall" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Auditorium Summit</span>
+          <div class="gallery-caption">Keynote Sessions & Applied Problem Solving</div>
+        </div>
+      </div>
+
+      <!-- Photo 4: Boardroom Entrepreneurship Talks -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_4.jpeg', 'Talks for Entrepreneurs - Industry R&D Roundtable Meet-Up')">
+        <img src="images/glimpse_4.jpeg" alt="Talks for Entrepreneurs" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Industry R&D</span>
+          <div class="gallery-caption">Talks for Entrepreneurs & Startup Mentorship</div>
+        </div>
+      </div>
+
+      <!-- Photo 5: Angel & VC Funding Session -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_5.jpeg', 'Angel & VC Funding Masterclass with ACE Engineering Students')">
+        <img src="images/glimpse_5.jpeg" alt="Angel & VC Funding Presentation" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Venture Insights</span>
+          <div class="gallery-caption">Venture Capital & Seed Funding Architecture</div>
+        </div>
+      </div>
+
+      <!-- Photo 6: Incubation Opportunities Session -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_6.jpeg', 'Department Session on Incubation Opportunities in CPS Lab')">
+        <img src="images/glimpse_6.jpeg" alt="Incubation Opportunities" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">CPS Incubation</span>
+          <div class="gallery-caption">Incubation Opportunities Seminar & Lab Meet</div>
+        </div>
+      </div>
+
+      <!-- Photo 7: Everything Will Be Ok Presentation -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_7.jpeg', 'Technical presentation session in Cyber-Physical Systems Lab')">
+        <img src="images/glimpse_7.jpeg" alt="CPS Lab Session" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Hardware Intellect</span>
+          <div class="gallery-caption">Interactive Prototyping in CPS Lab</div>
+        </div>
+      </div>
+
+      <!-- Photo 8: IIT Ropar CPS Lab Collaboration -->
+      <div class="gallery-card" onclick="openLightbox('images/glimpse_8.jpeg', 'Speaker addressing students during IIT Ropar CPS Lab Workshop')">
+        <img src="images/glimpse_8.jpeg" alt="IIT Ropar CPS Lab Workshop" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">External Mentorship</span>
+          <div class="gallery-caption">IIT Ropar CPS Lab Mentorship Sessions</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. ORGANIZING COMMITTEE (High Council + Solo Student Coordinator Sanjana)
+       ========================================================================== -->
+  <section class="site-section" id="council">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> Leadership & Order <span>✦</span>
+      </div>
+      <h2 class="section-title">Organizing Committee</h2>
+      <div class="gold-divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem">◆</div>
+        <div class="divider-line right"></div>
+      </div>
+      <p class="section-description">
+        Distinguished institutional leadership, industry advisory, and dedicated student coordination driving Hacknova 2026.
+      </p>
+    </div>
+
+    <!-- Tier 1: Council of Arch-Mages -->
+    <div class="tier-section">
+      <div class="tier-heading-block">
+        <div class="tier-badge">The High Council</div>
+        <h3 class="tier-title">✦ COUNCIL OF ARCH-MAGES ✦</h3>
+        <p class="tier-subtitle">Faculty Leadership, Institutional Directorate & Title Sponsor CEO</p>
+      </div>
+
+      <div class="team-cards-row">
+        
+        <!-- Capt CS Sharma (Screenshot 2026-10-15 143426.png) -->
+        <div class="team-member-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <img src="Screenshot 2026-10-15 143426.png" alt="Gp Capt CS Sharma, Veteran" class="avatar-photo" onerror="this.src='images/Screenshot 2026-10-15 143426.png'">
+            </div>
+          </div>
+          <div class="member-name">Gp Capt CS Sharma</div>
+          <div class="member-role">Veteran Registrar</div>
+          <div class="member-dept">Patron & Institutional Head</div>
+        </div>
+
+        <!-- Sponsor's CEO (Screenshot 2026-10-15 143831.png) -->
+        <div class="team-member-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <img src="Screenshot 2026-10-15 143831.png" alt="Sponsor's CEO - CodroidHub Pvt Ltd" class="avatar-photo" onerror="this.src='images/Screenshot 2026-10-15 143831.png'">
+            </div>
+          </div>
+          <div class="member-name">Sponsor's CEO</div>
+          <div class="member-role">CEO, CodroidHub</div>
+          <div class="member-dept">Title Sponsor & Ecosystem Leadership</div>
+        </div>
+
+        <!-- Dr. SK Jain -->
+        <div class="team-member-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <img src="images/faculty_dean_sk_jain.png" alt="Dr. SK Jain" class="avatar-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <svg class="avatar-svg-placeholder" style="display:none;" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">Dr. SK Jain</div>
+          <div class="member-role">Dean Academics</div>
+          <div class="member-dept">Academic Advisory Chair</div>
+        </div>
+
+        <!-- Er. Gagandeep Kaur -->
+        <div class="team-member-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <img src="images/faculty_gagandeep_kaur.png" alt="Er. Gagandeep Kaur" class="avatar-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <svg class="avatar-svg-placeholder" style="display:none;" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">Er. Gagandeep Kaur</div>
+          <div class="member-role">Dept Coordinator</div>
+          <div class="member-dept">AI & ML Department</div>
+        </div>
+
+        <!-- Dr. Anuja -->
+        <div class="team-member-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <img src="images/faculty_anuja.png" alt="Dr. Anuja" class="avatar-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <svg class="avatar-svg-placeholder" style="display:none;" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">Dr. Anuja</div>
+          <div class="member-role">Event Coordinator</div>
+          <div class="member-dept">AI & ML Department</div>
+        </div>
+
+        <!-- Er. Narender Kaur -->
+        <div class="team-member-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <svg class="avatar-svg-placeholder" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">Er. Narender Kaur</div>
+          <div class="member-role">Event Coordinator</div>
+          <div class="member-dept">Computer Science & Engg</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tier 2: Order of the Phoenix (Exactly One Student Coordinator: Sanjana) -->
+    <div class="tier-section">
+      <div class="tier-heading-block">
+        <div class="tier-badge">Student Vanguard & Coordination</div>
+        <h3 class="tier-title">ORDER OF THE PHOENIX</h3>
+        <p class="tier-subtitle">Core Committee (Student Leadership & Operations)</p>
+      </div>
+
+      <div class="team-cards-row">
+        <!-- Exactly one Student Coordinator: Sanjana -->
+        <div class="team-member-card solo-student-card">
+          <div class="member-avatar-wrapper">
+            <div class="avatar-frame">
+              <img src="Screenshot 2026-10-15 174637.png" alt="Sanjana" class="avatar-photo" onerror="this.src='images/Screenshot 2026-10-15 174637.png'">
+            </div>
+          </div>
+          <div class="member-name">Sanjana</div>
+          <div class="member-role">Student Coordinator</div>
+          <div class="member-dept">Head Student Convenor • AI&ML Department</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==========================================================================
+       8. REGISTRATION & QR CHAMBER
+       ========================================================================== -->
+  <section class="site-section" id="registration">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span>✦</span> Enlist Your Squad <span>✦</span>
+      </div>
+      <h2 class="section-title">Registration Chamber</h2>
+      <div class="gold-divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem">◆</div>
+        <div class="divider-line right"></div>
+      </div>
+      <p class="section-description">
+        Secure your team's berth in HACKNOVA 2026. Review the official prerequisites and complete your registration before the final deadline.
+      </p>
+    </div>
+
+    <div class="registration-box">
+      <div class="reg-info-left">
+        <h3 class="reg-info-title">Steps to Formal Registration</h3>
+        <p style="font-family:var(--font-serif); font-size:1.05rem; color:var(--color-text-muted); line-height:1.7;">
+          Open exclusively to students of Ambala College of Engineering and Applied Research. Gather your squad, choose a single theme, and submit your team's credentials.
+        </p>
+
+        <ul class="reg-rules-list">
+          <li>
+            <span class="rune">✦</span>
+            <div><strong>Squad Formation:</strong> Each team must consist of <strong>2 to 4 participants</strong>. Each student may belong to only one team.</div>
+          </li>
+          <li>
+            <span class="rune">✦</span>
+            <div><strong>Registration Fee:</strong> <strong>₹50 per team</strong> (mandatory). Fee must be submitted directly to the AI&ML Department at ACE.</div>
+          </li>
+          <li>
+            <span class="rune">✦</span>
+            <div><strong>Deadline:</strong> Submissions close on <strong>29th October 2026</strong>. Late entries will not be accommodated.</div>
+          </li>
+          <li>
+            <span class="rune">✦</span>
+            <div><strong>Originality Mandate:</strong> Plagiarism or pre-built legacy project submissions are strictly prohibited. AI tools are welcomed, but teams must explain all underlying logic during defense.</div>
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="https://forms.gle/dTjX5Ks7AvPNaRxMA" target="_blank" rel="noopener noreferrer" class="btn-primary-gold">
+            <span>📝</span>
+            <span>Open Google Form</span>
+          </a>
+          <a href="#themes" class="btn-secondary-dark">
+            <span>🔍</span>
+            <span>View Problem Statements</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- QR Code Frame -->
+      <div class="qr-card-container">
+        <div class="qr-img-frame">
+          <img src="images/registration_qr.png" alt="Registration Form QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fforms.gle%2FdTjX5Ks7AvPNaRxMA'">
+        </div>
+        <div class="qr-caption">Scan to Register</div>
+        <div class="qr-subtext">Direct Link to Official Google Form</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. FOOTER & CREDITS
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      
+      <!-- Col 1: College Identity & Tagline -->
+      <div class="footer-col">
+        <h4><span class="diamond">◆</span> Ambala College of Engineering</h4>
+        <p>Ambala College of Engineering and Applied Research is a pioneer technical institution dedicated to applied innovation and hands-on laboratory education.</p>
+        <p class="footer-tagline-quote">
+          "Where Education Is A Passion, Not A Business..."
+        </p>
+        <p style="font-size:0.85rem; color:var(--color-text-dim);">
+          Organized by the Department of Artificial Intelligence & Machine Learning (AI&ML) in association with the CSE Department. Powered by CodroidHub Pvt Ltd.
+        </p>
+      </div>
+
+      <!-- Col 2: Social Feeds & Community -->
+      <div class="footer-col">
+        <h4><span class="diamond">◆</span> Social Portals</h4>
+        <div class="social-links-list">
+          <a href="https://www.instagram.com/ambalacollegeofengineering" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon-box">📷</span>
+            <div>
+              <div style="font-weight:700;">Instagram</div>
+              <div style="font-size:0.75rem; color:var(--color-text-dim);">@ambalacollegeofengineering</div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/school/ambala-college-of-engineering-and-applied-research/" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon-box">💼</span>
+            <div>
+              <div style="font-weight:700;">LinkedIn</div>
+              <div style="font-size:0.75rem; color:var(--color-text-dim);">Ambala College of Engineering & Applied Research</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 3: Location & Campus Map Redirect Button -->
+      <div class="footer-col">
+        <h4><span class="diamond">◆</span> Campus Location</h4>
+        <div class="location-card">
+          <div class="location-details">
+            Devsthali, P.O. Sambhalkha, Near Mithapur, Ambala - 133101, Haryana, India.
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ambala+College+of+Engineering+and+Applied+Research" target="_blank" rel="noopener noreferrer" class="maps-redirect-btn">
+            <span>📍</span>
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar with Built By Sanjana -->
+    <div class="footer-bottom-bar">
+      <div class="footer-copy">
+        © 2026 HACKNOVA • Ambala College of Engineering and Applied Research. All rights reserved.
+      </div>
+      <div class="footer-credits">
+        Built by <span class="author">Sanjana</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       THEME DETAIL MODAL
+       ========================================================================== -->
+  <div id="themeDetailModal" role="dialog" aria-modal="true" aria-label="Theme Details">
+    <div class="theme-modal-box">
+      <button class="modal-close-cross" onclick="closeThemeModal()" aria-label="Close Modal">✕</button>
+      <div class="modal-header-meta">
+        <span class="theme-num-badge" id="modalThemeNum">Theme</span>
+        <span class="solution-type-tag" id="modalThemeTag">[S] Software</span>
+      </div>
+      <div style="font-family:var(--font-heading); font-size:0.85rem; color:var(--color-gold-primary); text-transform:uppercase; letter-spacing:1.5px;" id="modalThemeCategory">Category</div>
+      <h3 class="modal-theme-title" id="modalThemeTitle">Problem Statement Title</h3>
+      
+      <div class="modal-statement-body" id="modalThemeBody">
+        Full description will appear here.
+      </div>
+
+      <div class="modal-stakeholder-row" id="modalThemeStakeholder">
+        Stakeholder Details
+      </div>
+
+      <div style="display:flex; justify-content:flex-end;">
+        <a href="#registration" onclick="closeThemeModal()" class="btn-primary-gold" style="padding:10px 24px; font-size:0.82rem;">
+          <span>Register for this Theme</span> <span>➔</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       IMAGE LIGHTBOX MODAL
+       ========================================================================== -->
+  <div id="imageLightboxModal" role="dialog" aria-modal="true" aria-label="Photo Lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content-box" onclick="event.stopPropagation()">
+      <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close Lightbox">✕</button>
+      <img id="lightboxImg" src="" alt="Campus Glimpse" class="lightbox-img">
+      <div class="lightbox-caption-bar" id="lightboxCaption">Caption</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       EMBEDDED JAVASCRIPT
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. SESSION-BASED FULLSCREEN INTRO VIDEO CONTROLLER
+       ========================================================================== */
+    (function initVideoIntro() {
+      const STORAGE_KEY = 'hacknova_intro_watched';
+      const overlay = document.getElementById('videoIntroOverlay');
+      const video = document.getElementById('introVideo');
+      const regBtn = document.getElementById('videoRegisterBtn');
+
+      const hasWatched = sessionStorage.getItem(STORAGE_KEY) === 'true';
+
+      if (hasWatched) {
+        if (overlay) {
+          overlay.style.display = 'none';
+        }
+        document.body.classList.remove('intro-active');
+        return;
+      }
+
+      document.body.classList.add('intro-active');
+
+      function closeVideoAndTransition() {
+        sessionStorage.setItem(STORAGE_KEY, 'true');
+
+        if (video) {
+          video.pause();
+          video.muted = true;
+          video.currentTime = 0;
+          try {
+            video.removeAttribute('src');
+            video.load();
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+
+        if (overlay) {
+          overlay.classList.add('fade-out');
+          setTimeout(() => {
+            overlay.style.display = 'none';
+            document.body.classList.remove('intro-active');
+          }, 650);
+        }
+      }
+
+      if (regBtn) {
+        regBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          closeVideoAndTransition();
+
+          setTimeout(() => {
+            const regSection = document.getElementById('registration');
+            if (regSection) {
+              regSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 150);
+        });
+      }
+
+      if (video) {
+        video.addEventListener('ended', () => {
+          closeVideoAndTransition();
+        });
+
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(err => {
+            console.log('Autoplay unmuted blocked by browser policy, attempting muted fallback:', err);
+            video.muted = true;
+            video.play().catch(e => console.log('Autoplay failed:', e));
+          });
+        }
+      }
+    })();
+
+    /* ==========================================================================
+       2. LIVE COUNTDOWN TIMER TO 29 OCTOBER 2026
+       ========================================================================== */
+    (function initCountdown() {
+      const targetDate = new Date('2026-10-29T23:59:59+05:30').getTime();
+
+      const daysEl = document.getElementById('cdDays');
+      const hoursEl = document.getElementById('cdHours');
+      const minutesEl = document.getElementById('cdMinutes');
+      const secondsEl = document.getElementById('cdSeconds');
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          if (daysEl) daysEl.textContent = '00';
+          if (hoursEl) hoursEl.textContent = '00';
+          if (minutesEl) minutesEl.textContent = '00';
+          if (secondsEl) secondsEl.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    })();
+
+    /* ==========================================================================
+       3. AMBIENT PARTICLES CANVAS
+       ========================================================================== */
+    (function initParticles() {
+      const canvas = document.getElementById('ambientCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particleCount = 45;
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 0.8,
+          speedY: Math.random() * 0.4 + 0.15,
+          speedX: (Math.random() - 0.5) * 0.25,
+          opacity: Math.random() * 0.5 + 0.2,
+          pulse: Math.random() * 0.02 + 0.01,
+          color: Math.random() > 0.3 ? '#f0c030' : '#00bfff'
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let p of particles) {
+          p.y -= p.speedY;
+          p.x += p.speedX;
+          p.opacity += Math.sin(Date.now() * p.pulse) * 0.005;
+
+          if (p.y < -10) {
+            p.y = height + 10;
+            p.x = Math.random() * width;
+          }
+          if (p.x < -10) p.x = width + 10;
+          if (p.x > width + 10) p.x = -10;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = Math.max(0.1, Math.min(0.7, p.opacity));
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = p.color;
+          ctx.fill();
+        }
+
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    })();
+
+    /* ==========================================================================
+       4. CUSTOM WAND CURSOR (Desktop)
+       ========================================================================== */
+    (function initWandCursor() {
+      if (window.innerWidth < 860) return;
+
+      document.body.classList.add('has-cursor');
+      const cursor = document.getElementById('wandCursor');
+      const dot = document.getElementById('wandDot');
+
+      let mouseX = -100, mouseY = -100;
+      let curX = -100, curY = -100;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (dot) {
+          dot.style.left = `${mouseX}px`;
+          dot.style.top = `${mouseY}px`;
+        }
+      });
+
+      function animateCursor() {
+        curX += (mouseX - curX) * 0.18;
+        curY += (mouseY - curY) * 0.18;
+
+        if (cursor) {
+          cursor.style.left = `${curX}px`;
+          cursor.style.top = `${curY}px`;
+        }
+        requestAnimationFrame(animateCursor);
+      }
+      requestAnimationFrame(animateCursor);
+
+      const interactives = 'a, button, .theme-card, .gallery-card, .team-member-card, .sponsor-hero-card, .station-card';
+      document.querySelectorAll(interactives).forEach(el => {
+        el.addEventListener('mouseenter', () => cursor && cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor && cursor.classList.remove('hovering'));
+      });
+    })();
+
+    /* ==========================================================================
+       5. NAVBAR SCROLL & MOBILE MENU
+       ========================================================================== */
+    (function initNavbar() {
+      const header = document.getElementById('siteHeader');
+      const toggle = document.getElementById('mobileMenuBtn');
+      const drawer = document.getElementById('mobileDrawer');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      if (toggle && drawer) {
+        toggle.addEventListener('click', () => {
+          drawer.classList.toggle('open');
+        });
+
+        drawer.querySelectorAll('.mobile-link').forEach(link => {
+          link.addEventListener('click', () => {
+            drawer.classList.remove('open');
+          });
+        });
+      }
+    })();
+
+    /* ==========================================================================
+       6. THEMES FILTERING & DETAILS MODAL
+       ========================================================================== */
+    const officialThemes = {
+      1: {
+        num: "Theme 01",
+        tag: "[S] Software",
+        category: "AI-Powered Urban Mobility",
+        title: "Intelligent Traffic Light Synchronization",
+        body: "Traffic congestion frequently occurs at busy intersections when traffic lights follow fixed timings without considering actual vehicle density. This leads to long queues, fuel wastage, increased pollution and delays for emergency vehicles.\n\nDevelop an intelligent traffic light synchronization system that analyses traffic density across connected intersections and dynamically adjusts signal timings to improve traffic flow. The system should coordinate nearby signals to reduce congestion and unnecessary stopping, while prioritizing emergency vehicles wherever feasible.",
+        stakeholder: "🏛️ Target Domain: Municipal Traffic Management & Emergency Services"
+      },
+      2: {
+        num: "Theme 02",
+        tag: "[S] Software",
+        category: "Smart Education and Classroom Analytics",
+        title: "Academic Performance-Based Intelligent Seating Arrangement",
+        body: "Teachers often find it difficult to arrange classroom seating in a way that supports students with different academic performance levels.\n\nDevelop an intelligent seating arrangement system that accepts student details, marks and performance data, calculates performance averages, identifies relative learning needs and generates an optimized seating plan. The system should strategically pair or seat students of different performance levels to encourage peer learning while maintaining fairness, privacy and a supportive environment. Recommendations must not permanently label or stigmatize students.",
+        stakeholder: "🏫 Target Domain: Academic Departments & Instructional Design"
+      },
+      3: {
+        num: "Theme 03",
+        tag: "[S] Software",
+        category: "Smart Tourism and Public Safety",
+        title: "Crowd Management at Pilgrimage Sites",
+        body: "Large pilgrimages and religious gatherings attract thousands of visitors to locations with limited space and narrow entry or exit routes. Authorities may struggle to identify overcrowded areas early, resulting in unsafe crowd movement and potential stampede risks.\n\nDevelop a crowd management system that estimates crowd density, identifies potentially dangerous congestion zones, provides timely alerts, and recommends safer movement routes or diversion measures. The solution should work with real-time or simulated data and assist authorities in making informed decisions.",
+        stakeholder: "🛡️ Target Domain: State Tourism Department / Pilgrimage Site Administration"
+      },
+      4: {
+        num: "Theme 04",
+        tag: "[S] Software",
+        category: "Campus Grievance / Digital Trust",
+        title: "Grievance Cell (Chatbot Model) & Booklet Authentication",
+        body: "Option A: Campus Grievance Redressal (Grievance Cell Chatbot Model):\nStudents often struggle to raise complaints and inquiries and receive timely responses, because grievances are handled through scattered, manual channels. Develop an automated grievance cell system built around a chatbot that uses an LLM (Large Language Model) to receive student complaints and inquiries, route them to the relevant college department and address common grievances automatically.\n\nOption B: Digital Trust and Product Authentication:\nDevelop a digital authentication system that verifies product or booklet identity using secure cryptographic QR codes, serial hashing, and tamper-evident checks to flag fraudulent or altered examination certificates and goods.",
+        stakeholder: "🔐 Target Domain: College Administration / Student Welfare / Examination Integrity"
+      },
+      5: {
+        num: "Theme 05",
+        tag: "[S] Software",
+        category: "Preventive Healthcare and AI",
+        title: "Early Detection of Silent Diseases",
+        body: "Diseases such as diabetes, hypertension and anaemia may remain unnoticed until symptoms become severe or complications develop, and limited screening facilities delay timely risk assessment.\n\nDevelop an AI-assisted screening and risk assessment system that analyses appropriate health indicators and available patient data to identify individuals who may benefit from early medical evaluation. The system should provide understandable risk alerts and encourage consultation with qualified healthcare professionals. It must not claim to replace a medical diagnosis.",
+        stakeholder: "🩺 Target Domain: Primary Healthcare Centres / Community Health Workers"
+      },
+      6: {
+        num: "Theme 06",
+        tag: "[S] Software",
+        category: "Healthcare Cybersecurity",
+        title: "Ransomware Resilience for Hospitals",
+        body: "Hospitals depend on digital patient records, appointment systems, laboratory reports and other critical IT services. A ransomware incident can make these systems unavailable, interrupt healthcare operations and expose sensitive information.\n\nDevelop a hospital-focused cybersecurity monitoring and preparedness system that identifies suspicious activity, checks backup readiness, detects unusual file changes, and supports incident reporting and recovery planning. The prototype should be demonstrated using safe test data or a simulated environment, without deploying actual ransomware.",
+        stakeholder: "🏥 Target Domain: Ministry of Health / Hospital IT Administration / CERT-In"
+      },
+      7: {
+        num: "Theme 07",
+        tag: "[S] Software",
+        category: "Smart Campus & Water Infrastructure",
+        title: "Smart Campus App & Invisible Water Loss Prediction",
+        body: "Option A: Smart Campus App Development:\nColleges manage transportation fees, student and faculty records, performance monitoring and routine checks through separate processes. Develop a comprehensive college management application that centralizes administrative operations, fee tracking, and performance analytics.\n\nOption B: Smart Water Infrastructure:\nDevelop a predictive monitoring system analysing water-flow readings, consumption variations, and pressure anomalies to localize invisible underground water leaks and prioritize campus maintenance inspections.",
+        stakeholder: "💧 Target Domain: Campus Maintenance / Hostel & College Administration"
+      },
+      8: {
+        num: "Theme 08",
+        tag: "[S] Software",
+        category: "Smart Supply Chain and Food Safety",
+        title: "Food Cold-Chain Failure Prediction",
+        body: "Perishable food and temperature-sensitive supplies can become unsafe when storage or transportation conditions are not maintained.\n\nDevelop a predictive monitoring system that analyses simulated temperature, humidity, transit duration and storage records to identify possible cold-chain failures. It should flag high-risk shipments, estimate urgency and help operators take corrective action before further losses occur.",
+        stakeholder: "❄️ Target Domain: Food Safety Officers / Logistics Operators"
+      }
+    };
+
+    document.querySelectorAll('.theme-filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.theme-card').forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'flex';
+          } else {
+            const categories = card.getAttribute('data-category').split(' ');
+            if (categories.includes(filter)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+
+    window.openThemeModal = function(id) {
+      const data = officialThemes[id];
+      if (!data) return;
+
+      document.getElementById('modalThemeNum').textContent = data.num;
+      document.getElementById('modalThemeTag').textContent = data.tag;
+      document.getElementById('modalThemeCategory').textContent = data.category;
+      document.getElementById('modalThemeTitle').textContent = data.title;
+      document.getElementById('modalThemeBody').textContent = data.body;
+      document.getElementById('modalThemeStakeholder').textContent = data.stakeholder;
+
+      const modal = document.getElementById('themeDetailModal');
+      if (modal) modal.classList.add('active');
+    };
+
+    window.closeThemeModal = function() {
+      const modal = document.getElementById('themeDetailModal');
+      if (modal) modal.classList.remove('active');
+    };
+
+    /* ==========================================================================
+       7. IMAGE LIGHTBOX MODAL
+       ========================================================================== */
+    window.openLightbox = function(src, caption) {
+      const modal = document.getElementById('imageLightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+
+      if (modal && img && cap) {
+        img.src = src;
+        cap.textContent = caption;
+        modal.classList.add('active');
+      }
+    };
+
+    window.closeLightbox = function() {
+      const modal = document.getElementById('imageLightboxModal');
+      if (modal) modal.classList.remove('active');
+    };
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeThemeModal();
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
