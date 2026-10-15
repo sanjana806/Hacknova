@@ -1,0 +1,2 @@
+# Hacknova 2026 - Web Service Dependencies
+gunicorn>=21.2.0
